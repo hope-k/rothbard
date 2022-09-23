@@ -19,7 +19,7 @@ ReactDOM.render(
     <BrowserRouter>
       <Provider store={store}>
         <NotificationsProvider>
-          <App />
+            <App />
         </NotificationsProvider>
       </Provider>
     </BrowserRouter>

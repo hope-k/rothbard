@@ -18,9 +18,9 @@ body {
 
 .homeBg {
   background-repeat: no-repeat;
-  position: absolute;
+  position: fixed;
   background-image: linear-gradient(to right, rgba(8, 15, 110, 0.5), rgba(90, 142, 219, 0.53)),
-    url('https://res.cloudinary.com/hopekumordzie/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1647300211/pexels-photo-4968634_kkawlq.jpg');
+    url('https://res.cloudinary.com/hopekumordzie/image/upload/v1663938655/tablechat_ri3cgr.jpg');
   ;
   top: 0;
   left: 0;

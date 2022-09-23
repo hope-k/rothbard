@@ -5,10 +5,15 @@ import { TextPlugin } from "gsap/TextPlugin";
 import { Link } from 'react-router-dom'
 import { Parallax } from 'react-scroll-parallax';
 import Intro from '../Intro'
+import Features from '../Features';
+import Numbers from '../Numbers';
+import Footer from '../Footer';
+
 
 gsap.registerPlugin(TextPlugin);
 
 const Home = () => {
+
     React.useLayoutEffect(() => {
         gsap.from('#homePage', {
             scale: .9,
@@ -26,19 +31,19 @@ const Home = () => {
     }, [])
     return (
         <>
-            <div speed={5} className='relative' id='homePage'>
+            <div className='relative' id='homePage'>
                 <div className="homeBg"></div>
                 <div className='h-screen md:h-[100vh] bg-[#E5EBE1] lg:overflow-hidden'>
                     <div className='container px-10 lg:px-[10rem] h-full z-10 relative items-center flex lg:items-baseline'>
                         <div className='lg:w-full pt-[5rem] w-full flex flex-col justify-center items-start'>
                             <div id='heading' className='relative whitespace-nowrap flex text-[#cababa] text-[18px] tracking-wider font-light pb-11 pt-8 lg:pt-8'>
-                                <span id='heading'>Invest.</span><span className='ml-6'><ShieldCheckIcon className='w-5 absolute left-[3.5rem] bottom-[3rem]'/> Secure</span> . Guarantee
+                                <span id='heading'>Invest.</span><span className='ml-6'><ShieldCheckIcon className='w-5 absolute left-[3.5rem] bottom-[3rem]' /> Secure</span> . Guarantee
                             </div>
 
                             <div className='pb-16'>
                                 <h1 className='text-4xl pb-8 text-[#f0f0f0] lora md:max-w-lg tracking-normal font-semibold'>Welcome to the <span className='border-b border-yellow-600 font-medium tracking-tight  mb-2'>Hackett Hill Capital</span>. Your Next Experience In Trust.</h1>
                                 <p className='max-w-[75ch] text-[16px] text-[#C0C0C0] tracking-wide'>
-                                    Hacket Hill Capital is the new reality of banking. Everything you need to build you financial future all in one place.  
+                                    Hacket Hill Capital is the new reality of banking. Everything you need to build you financial future all in one place.
                                     The easiest way to manage personal finance.
                                     Send and receive money all over the world
                                     Our mission is to make you succeed both in your business income management and your personal finances.
@@ -98,9 +103,12 @@ const Home = () => {
                     </div>
                 </div>
 
+                <Intro />
+                <Numbers/>
+                <Features/>
+                <Footer/>
             </div>
 
-            <Intro />
 
         </>
     )

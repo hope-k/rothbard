@@ -5,7 +5,7 @@ import { TextPlugin } from "gsap/TextPlugin";
 import { Link } from 'react-router-dom'
 import { Parallax } from 'react-scroll-parallax';
 import Intro from '../Intro'
-import Features from '../Features';
+import Services from '../Services';
 import Numbers from '../Numbers';
 import Footer from '../Footer';
 
@@ -29,6 +29,10 @@ const Home = () => {
         gsap.timeline({ defaults: { duration: .8, stagger: .18 } })
             .from("#bankings", { ease: 'power4.in', y: 35, opacity: 0 })
     }, [])
+
+    const serviceListOne = ['Free account', '100% transparent costs', '24/7 support', 'Online banking', 'Mobile banking', 'Full data privacy compliance']
+    const serviceListTwo = ['Easy transfers', 'A powerful security infrastructure','Business without borders', 'Deposit checks instantly', 'Worldwide Coverage', 'Affiliates and partnership']
+    const serviceListThree = ['Corporate Cards', 'International Investments', 'Direct Debit', 'Premium Support', 'Automated Accounting', 'Business Banking']
     return (
         <>
             <div className='relative' id='homePage'>
@@ -104,8 +108,26 @@ const Home = () => {
                 </div>
 
                 <Intro />
-                <Numbers/>
-                <Features/>
+                <Services 
+                    title= 'For People, Entrepreneurs and Business Men'
+                    description= 'Our bank is equiped with the right tools to grow both your personal and business incomex.'
+                    image= '/serviceOne.png'
+                    services= {serviceListOne}
+                />                
+                <Services 
+                    title= 'Small- to medium-sized businesses'
+                    description= 'Our bank is perfect for SMEs'
+                    image= '/serviceTwo.png'
+                    services= {serviceListTwo}
+                    reversed
+                />                
+                <Services 
+                    title= 'Large or enterprise level businesses'
+                    description= 'We render top class services to all our corporate customers, providing world class business products at their disposal.'
+                    image= '/serviceThree.png'
+                    services= {serviceListThree}
+                    
+                />
                 <Footer/>
             </div>
 

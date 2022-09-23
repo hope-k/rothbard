@@ -32,7 +32,7 @@ const Header = () => {
         <>
             <MobileNav open={open} toggleOpen={toggleOpen} />
 
-              {loading ? <></> :
+            {loading ? <></> :
                 !isAuthenticated &&
                 (
                     <div className={'hidden bg-white w-full h-[6rem] lg:flex relative z-20 '}>
@@ -51,7 +51,7 @@ const Header = () => {
                                     </svg>
                                 </div>
                                 <div >
-                                    <div className='text-slate-600 font-bold text-sm'>+1 (971) 234-2131</div>
+                                    <div className='text-slate-600 font-bold text-sm'>+61 3 9854 4666 </div>
                                     <div className='text-slate-500 text-sm'>hacketthillcapital@support.com</div>
                                 </div>
                             </div>
@@ -60,15 +60,15 @@ const Header = () => {
                                     <LocationMarkerIcon className='w-4' />
                                 </div>
                                 <div>
-                                    <div className='text-slate-600 font-bold text-sm'>388 Greenwich St</div>
-                                    <div className='text-slate-500 text-sm'> 388 Greenwich St, New York, NY 10013,</div>
+                                    <div className='text-slate-600 font-bold text-sm'>232 High St</div>
+                                    <div className='text-slate-500 text-sm'> 232 High St, Kew VIC 3101, Australia</div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 )
             }
-            <div className={'drop-shadow-xl border-b-[.4px] border-slate-500 flex font-base text-base sticky top-0 z-[60] ' + (isAuthenticated ? ' bg-transparent border-none ' : ' bg-[#070707] ') + (isAuthenticated && user?.role?.includes('admin') && ' bg-gray-800 ')}>
+            <div className={'drop-shadow-xl border-b-[.4px] border-slate-500 flex font-base text-base sticky top-0 z-[60] h-[3.5rem] ' + (isAuthenticated ? ' bg-transparent border-none ' : ' bg-[#fff] ') + (isAuthenticated && user?.role?.includes('admin') && ' bg-gray-800 ')}>
                 <div className='lg:hidden px-4 md:px-10 flex p-3 justify-between w-full items-center'>
                     <div className='w-[2.5rem]' onClick={() => toggleOpen()}>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#ccc" >
@@ -121,16 +121,16 @@ const Header = () => {
                 {
                     !isAuthenticated &&
 
-                    <div className=' hidden container lg:flex px-[10rem] items-center text-[#ccc] justify-center'>
+                    <div className=' hidden container lg:flex px-[10rem] items-center text-[#665522] justify-center'>
                         <div className='flex w-full '>
-                            <Link to='/sign-in' className='duration-200 p-4 hover:text-white hover:bg-[#1c2c5e]'>Online Banking</Link>
-                            <Link to='/sign-in' className='duration-200 p-4 hover:text-white hover:bg-[#1c2c5e] whitespace-nowrap'>Credit Cards</Link>
-                            <Link to='/sign-in' className='duration-200 p-4 hover:text-white hover:bg-[#1c2c5e] whitespace-nowrap'>Checking & Savings</Link>
-                            <Link to='/sign-in' className='duration-200 p-4 hover:text-white hover:bg-[#1c2c5e]'>Loans</Link>
+                            <Link to='/sign-in' className='duration-200 p-4 hover:text-white hover:bg-[#605111]'>Online Banking</Link>
+                            <Link to='/sign-in' className='duration-200 p-4 hover:text-white hover:bg-[#605111] whitespace-nowrap'>Credit Cards</Link>
+                            <Link to='/sign-in' className='duration-200 p-4 hover:text-white hover:bg-[#605111] whitespace-nowrap'>Checking & Savings</Link>
+                            <Link to='/sign-in' className='duration-200 p-4 hover:text-white hover:bg-[#605111]'>Loans</Link>
                         </div>
                         <div className='flex'>
-                            <Link to='/register' className='duration-200 p-4  whitespace-nowrap hover:text-white hover:bg-[#1c2c5e]'>Request Account</Link>
-                            <Link to='/sign-in' className='whitespace-nowrap duration-200 p-4 flex hover:text-white hover:bg-[#1c2c5e] text-[white] font-semibold'>
+                            <Link to='/register' className='duration-200 p-4  whitespace-nowrap hover:text-white hover:bg-[#605111]'>Request Account</Link>
+                                <Link to='/sign-in' className='whitespace-nowrap duration-200 p-4 flex hover:text-white hover:bg-[#605111] text-[#665522] font-semibold'>
                                 Sign On
                                 <div className='ml-2 pt-[2px]'>
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-4" viewBox="0 0 20 20" fill="currentColor">

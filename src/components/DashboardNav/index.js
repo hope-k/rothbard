@@ -28,12 +28,11 @@ const DashboardNav = () => {
     <>
       <div className='bg-teal-700 fixed top-0 h-[43vh] lg:w-[83.6%] w-screen z-10 rounded-bl-3xl rounded-br-3xl right-0'>
       </div>
-
-      <div className='hidden lg:flex h-full '>
-        <div className='bg-[#e6e6e6] h-full w-[16.4%] fixed left-0 border-2 rounded-lg border-gray-300  flex'>
+      <div className='hidden lg:flex h-full'>
+        <div className=' h-full w-[16.4%] fixed left-0 border-r-2 rounded-lg border-gray-100  flex'>
           <div id='dashboardNav' className=' flex flex-col items-center h-full w-full'>
-            <div className='w-[16rem]  p-2 mr-[2rem] rounded-2xl mt-[-4rem]'>
-              <img src='https://res.cloudinary.com/hopekumordzie/image/upload/v1647711899/Est._1989-removebg-preview_xhkheb.png' alt='logo' />
+            <div className='w-[16rem]  p-2  rounded-2xl mt-[1rem]'>
+              <img src='/hacketthill.png' alt='logo' />
             </div>
             <div className='w-full absolute top-[10rem]'>
               <Link to='/account/dashboard' className={' mb-5 flex items-center w-full px-6 py-[0.62rem] duration-500 ' + (location.pathname === '/account/dashboard' && 'bg-[#74b3e750] flex  font-semibold border-l-[5.5px] border-green-600')}>

@@ -44,29 +44,28 @@ const MobileNav = ({ open, toggleOpen }) => {
 
     return (
         <div id='menu' className='bg-slate-100 h-[100vh] w-[70%] fixed top-0 px-0 lg:hidden z-[81] translate-x-[-100%]'>
-
-
             <div className='px-4 mt-2'>
                 <div className='w-8 fixed right-0 top-4 mr-3 z-[1]' onClick={() => toggleOpen()}>
                     <XIcon />
                 </div>
                 <div className=' cursor-pointer'>
-                    <Link to='/' className='absolute z-[-1] top-[-3rem] left-[-1rem]'>
+                    <Link to='/' className=' z-[-1] relative top-[2.3rem]'>
                         <div className=''>
-                            <img className='h-[20rem]' src='https://res.cloudinary.com/hopekumordzie/image/upload/v1647711899/Est._1989-removebg-preview_xhkheb.png' alt='logo' />
+                            <img className='' src='/hacketthill.png' alt='logo' />
                         </div>
                     </Link>
                 </div>
-                <div className='mt-4'>
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 absolute " viewBox="0 0 20 20" fill="currentColor">
-                        <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
-                    </svg>
-                    <input
-                        type='text'
-                        placeholder='Search'
-                        className='border-b border-gray-400 bg-slate-100 pl-8 pb-1'
-                    />
-                </div>
+                {//<div className='mt-4'>
+                 //   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 absolute " viewBox="0 0 20 20" fill="currentColor">
+                 //       <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
+                 //   </svg>
+                 //   <input
+                 //       type='text'
+                 //       placeholder='Search'
+                 //       className='border-b border-gray-400 bg-slate-100 pl-8 pb-1'
+                  //  />
+                //</div>
+                }
             </div>
             {
                 user && user?.role?.includes('admin') ?
@@ -83,7 +82,7 @@ const MobileNav = ({ open, toggleOpen }) => {
                     <div className='container w-full flex flex-col h-full pt-[8rem] overflow-y-scroll'>
                         <div className='font-semibold w-full'>
                             <Link to={'/'} onClick={() => toggleOpen()} className={'duration-500 px-6 py-[0.62rem]  mb-8  flex ' + (isAuthenticated && 'hidden')}>
-                                <div className='mr-3 stroke-[#3ebde4]'>
+                                <div className='mr-1 stroke-[#996515]'>
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="" strokeWidth="2">
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                                     </svg>
@@ -99,7 +98,7 @@ const MobileNav = ({ open, toggleOpen }) => {
                                         </div>
                                         :
                                         <div className='flex px-2'>
-                                            <div className='mr-3 stroke-[#3ebde4]'>
+                                            <div className='mr-1 stroke-[#996515]'>
                                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="" strokeWidth="2">
                                                     <path strokeLinecap="round" strokeLinejoin="round" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                                 </svg>
@@ -112,11 +111,11 @@ const MobileNav = ({ open, toggleOpen }) => {
                                 {
                                     isAuthenticated ?
                                         <div className={' flex items-center '}>
-                                            <BiTransfer className='mr-3 text-2xl text-[#3ebde4]' />
+                                            <BiTransfer className='mr-1 text-2xl text-[#3ebde4]' />
                                             Transfer Funds
                                         </div> :
                                         <div className='flex'>
-                                            <div className='mr-3 stroke-[#3ebde4]'>
+                                            <div className='mr-1 stroke-[#996515]'>
                                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="">
                                                     <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
                                                     <path fillRule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clipRule="evenodd" />
@@ -130,11 +129,11 @@ const MobileNav = ({ open, toggleOpen }) => {
                                 {
                                     isAuthenticated ?
                                         <div className={'flex items-center '}>
-                                            <GiHistogram className='mr-3 text-2xl text-[#3ebde4]' />
+                                            <GiHistogram className='mr-1 text-2xl text-[#3ebde4]' />
                                             Transactions
                                         </div> :
                                         <div className='flex'>
-                                            <div className='mr-3 stroke-[#3ebde4]'>
+                                            <div className='mr-1 stroke-[#996515]'>
                                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="" strokeWidth="2">
                                                     <path strokeLinecap="round" strokeLinejoin="round" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
                                                 </svg>
@@ -171,19 +170,19 @@ const MobileNav = ({ open, toggleOpen }) => {
                                 {
                                     isAuthenticated ?
                                         <div className=' flex items-center' onClick={() => logoutUser() } >
-                                            <HiOutlineLogout className='mr-3 text-2xl text-red-600' />
+                                            <HiOutlineLogout className='mr-1 text-2xl text-red-600' />
                                             Sign Out
                                         </div> :
                                         <div className='flex flex-col'>
                                             <div className='flex'>
-                                                <div className='mr-3 stroke-[#3ebde4]'>
+                                                <div className='mr-1 stroke-[#996515]'>
                                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="" strokeWidth="2">
                                                         <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                                     </svg>
                                                 </div>
                                                 Loans
                                             </div>
-                                            <Link to='register' className='flex mt-6 bg-blue-300 p-1 rounded-md'>
+                                            <Link to='register' className='flex mt-6 bg-[#996415] p-2 rounded text-white'>
                                     
                                                 Request An Account
                                             </Link>

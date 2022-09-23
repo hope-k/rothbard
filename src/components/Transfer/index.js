@@ -15,10 +15,12 @@ const Transfer = () => {
     const { error, loading, success } = useSelector(state => state.transfer)
     const dispatch = useDispatch();
     useEffect(() => {
-
         if (loading) {
-            notify('Processing Transaction...', 'loading', { dismissible: false })
-        } 
+            notify('Processing Transaction...',  'loading', { dismissible: false })
+        }else{
+            return
+        }
+
         if (error) {
             notify(error, { title: 'Transaction Error', status: 'error' })
             dispatch(resetTransferError())
@@ -163,7 +165,7 @@ const Transfer = () => {
 
                                 </div>
 
-                                <button type='submit' className=' bg-[#3ebde4] w-fit h-fit p-2 text-white font-semibold rounded-md px-6'>
+                                <button disabled={loading ? true : false} type='submit' className=' bg-[#3ebde4] w-fit h-fit p-2 text-white font-semibold rounded-md px-6'>
                                     Transfer
                                 </button>
                             </div>

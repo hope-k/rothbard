@@ -46,7 +46,7 @@ const LoginPage = () => {
             password
         }
         dispatch(login(userObj));
-        
+
     }
     useEffect(() => {
         if (isAuthenticated && user?.role === 'user') {
@@ -54,18 +54,20 @@ const LoginPage = () => {
         } else if (user?.role === 'admin' && isAuthenticated) {
             navigate('/admin/users')
         }
-    },[isAuthenticated, user?.role])
+    }, [isAuthenticated, user?.role])
     return (
         <div className='relative' id='loginPage'>
             <div className="loginBg"></div>
             <div className='pt-20 flex justify-center px-8 md:px-24 lg:px-7 relative '>
                 <div className=' bg-[rgba(217,224,230,0.88)] z-10 lg:p-12 flex flex-col rounded-2xl relative lg:w-[40%] w-full '>
                     <div className='relative  pb-24 mt-6 whitespace-nowrap justify-center flex flex-col items-center'>
-                        <h1 className='font-light text-2xl text-[black] lg:flex'>
+                        <h1 className='font-light text-2xl text-[black] flex lg:flex-row flex-col justify-center relative'>
                             Online Banking Sign-In Portal
-                            <svg xmlns="http://www.w3.org/2000/svg" className="w-7 ml-2 mb-[.3rem] flex lg:mt-1" fill="none" viewBox="0 0 24 24" stroke="#1c2c5e" strokeWidth="1">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-                            </svg>
+                            <div className='flex w-full justify-center mt-1 lg:mt-0'>
+                                <svg xmlns="http://www.w3.org/2000/svg" className="w-7 ml-2 mb-[.3rem]  lg:mt-1" fill="none" viewBox="0 0 24 24" stroke="#1c2c5e" strokeWidth="1">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                                </svg>
+                            </div>
                         </h1>
                         {
                             loading && <FadeLoader css={{ color: 'red' }} height={10} width={20} margin={1} color='#fff' />

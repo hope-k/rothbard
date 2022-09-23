@@ -4,7 +4,6 @@ import Odometer from 'react-odometerjs';
 const Numbers = () => {
   return (
     <div>
-          <Odometer animation='count' value={1234} />
     </div>
   )
 }

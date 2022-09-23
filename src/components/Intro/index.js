@@ -8,7 +8,7 @@ import { ReactComponent as Secure } from '../../assets/secure.svg';
 
 const Intro = () => {
     return (
-        <div className='pt-10 px-10 container lg:px-[10rem] my-20'>
+        <div className=' px-10 lg:px-[10rem] py-20  w-full  bg-slate-100'>
             <div className='bg-white flex justify-between rounded-2xl shadow-2xl border border-gray-200 lg:flex-row flex-col'  >
                 <div className='m-3 border-r border-gray-200 flex flex-col justify-center items-center p-5'>
                     <div className='w-[5rem] mb-4'>

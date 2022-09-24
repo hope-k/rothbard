@@ -57,7 +57,7 @@ const AdminStats = () => {
             user
         }
         dispatch(addStat(statObj));
- 
+
 
 
     }
@@ -90,6 +90,15 @@ const AdminStats = () => {
         })
     })
 
+    const handlePrefill = () => {
+        setIncomeYear('2021')
+        setIncomeAmount('100000')
+        setExpenseYear('2021')
+        setExpenseAmount('50000')
+    }
+
+
+
 
 
 
@@ -110,7 +119,7 @@ const AdminStats = () => {
                                     type='text'
                                     placeholder=' '
                                     value={incomeYear}
-                                    onChange={(e) => setIncomeYear(e.target.value)}
+                                    onChange={(e) => {setIncomeYear(e.target.value)}}
 
                                 />
                                 <label className=' lg:flex duration-200 transition-all ease-in-out absolute top-[-1.5rem] peer-focus:top-[-1.5rem] peer-focus:text-sm peer-focus:text-teal-500 peer-focus:font-semibold  peer-placeholder-shown:top-[0] peer-placeholder-shown:text-base text-sm pointer-events-none text-gray-500'>
@@ -187,6 +196,9 @@ const AdminStats = () => {
                         </button>
                     </div>
                 </form>
+                <button onClick={handlePrefill} className=' bg-[#3ebde4] m-5 w-fit p-2 text-white font-semibold rounded-md px-6'>
+                    Prefill
+                </button>
                 <div className='flex flex-col justify-center w-full items-center p-8'>
                     <div className='bg-slate-100 m-5 max-w-fit rounded-xl'>
                         <h1 className='px-20 p-8 font-bold '>

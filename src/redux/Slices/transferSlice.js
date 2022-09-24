@@ -27,7 +27,7 @@ export const makeTransfer = createAsyncThunk('/makeTransfer', async (transferDet
 
 const initialState = {
     error: null,
-    loading: null,
+    loading: false,
     success: null,
 }
 

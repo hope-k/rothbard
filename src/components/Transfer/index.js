@@ -7,7 +7,8 @@ import accounting from 'accounting'
 import { makeTransfer, resetTransferSuccess, resetTransferError } from '../../redux/Slices/transferSlice'
 import { useNotifications } from 'reapop'
 import { useNavigate } from 'react-router-dom'
-
+import FadeLoader from 'react-spinners/FadeLoader'
+import { RotatingLines } from 'react-loader-spinner'
 
 const Transfer = () => {
     const navigate = useNavigate()
@@ -15,11 +16,7 @@ const Transfer = () => {
     const { error, loading, success } = useSelector(state => state.transfer)
     const dispatch = useDispatch();
     useEffect(() => {
-        if (loading) {
-            notify('Processing Transaction...',  'loading', { dismissible: false })
-        }else{
-            return
-        }
+
 
         if (error) {
             notify(error, { title: 'Transaction Error', status: 'error' })
@@ -31,11 +28,16 @@ const Transfer = () => {
             navigate('/account/transactions');
         }
 
-    }, [error, dispatch, notify, loading, success, navigate]);
+    }, [error, dispatch, notify, success, navigate]);
 
     useEffect(() => {
-        dispatch(getMyAccounts())
     }, [dispatch])
+
+    useEffect(() => {
+        if (loading) {
+            notify('Processing Transaction...', 'loading', { dismissible: false })
+        }
+    }, [loading, notify])
 
     const { accounts } = useSelector(state => state.accounts);
     const [payeeAccountNumber, setPayeeAccountNumber] = useState('');
@@ -165,8 +167,21 @@ const Transfer = () => {
 
                                 </div>
 
-                                <button disabled={loading ? true : false} type='submit' className=' bg-[#3ebde4] w-fit h-fit p-2 text-white font-semibold rounded-md px-6'>
-                                    Transfer
+                                <button disabled={loading ? true : false} type='submit' className=' bg-[#3ebde4] w-fit h-fit p-2 text-white font-semibold rounded-md px-6 disabled:opacity-50'>
+                                    <div>
+                                    {
+                                        loading ? 
+                                        <RotatingLines
+                                            strokeColor="white"
+                                            strokeWidth="1.5"
+                                            animationDuration="0.75"
+                                            width="30"
+                                            visible={true}
+                                        />
+                                        :
+                                        'Transfer'
+                                    }
+                                    </div>
                                 </button>
                             </div>
                         </form>

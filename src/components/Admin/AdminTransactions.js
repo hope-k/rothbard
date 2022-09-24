@@ -36,8 +36,7 @@ const AdminTransactions = () => {
     useEffect(() => {
         if (editField && editValue && editID) {
             if (editField === 'createdAt') {
-                const createdAt = moment(editValue).toISOString()
-                console.log(createdAt)
+                const createdAt = new Date(editValue).toISOString()
                 const updateFields = { field: editField, value: createdAt, id: editID }
                 dispatch(updateTransactions(updateFields));
             }

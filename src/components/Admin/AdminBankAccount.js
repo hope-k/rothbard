@@ -110,6 +110,7 @@ const AdminBankAccount = () => {
                                 >
                                     <option value={'checking'}>Checking</option>
                                     <option value={'savings'}>Savings</option>
+                                    <option value={'investments'}>investments</option>
                                 </select>
 
 

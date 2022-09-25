@@ -20,7 +20,7 @@ const DashboardNav = () => {
     navigate(0)
 
   }
-  
+
 
 
 
@@ -59,11 +59,15 @@ const DashboardNav = () => {
                 <VscRemote className='mr-2 text-2xl text-[#3ebde4]' />
                 Remote Deposits
               </div>
-              <div className='cursor-pointer mb-5 flex items-center   px-6 py-[0.62rem]'>
+              <Link onClick={(e) => {
+                window.location.href = "mailto:support@hacketthillau.com";
+                e.preventDefault();
+              }} to='#' className='cursor-pointer mb-5 flex items-center   px-6 py-[0.62rem]'
+              >
                 <BsQuestionCircle className='mr-2 text-2xl text-[#3ebde4]' />
                 Support
-              </div>
-              <div onClick={() => logoutUser()}  className='cursor-pointer flex items-center  px-6 py-[0.62rem]'>
+              </Link>
+              <div onClick={() => logoutUser()} className='cursor-pointer flex items-center  px-6 py-[0.62rem]'>
                 <HiOutlineLogout className='mr-2 text-2xl text-red-600' />
                 Sign Out
               </div>

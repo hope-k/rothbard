@@ -60,7 +60,7 @@ const DashboardNav = () => {
                 Remote Deposits
               </div>
               <Link onClick={(e) => {
-                window.location.href = "mailto:support@hacketthillau.com";
+                window.location.href = "mailto:support@hacketthillau.com"
                 e.preventDefault();
               }} to='#' className='cursor-pointer mb-5 flex items-center   px-6 py-[0.62rem]'
               >

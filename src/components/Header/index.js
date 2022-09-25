@@ -107,8 +107,13 @@ const Header = () => {
                         </div>
                         {
                             isAuthenticated &&
-                            <div className='ml-2' >
-                                <ChevronDownIcon className='w-4 ml-1 text-white' />
+                            <div className='ml-2 flex' >
+                                {
+                                    user?.image2 && (
+                                        <img onClick={() => toggleProfileOpen()} src={user?.image2} alt='profile' className='w-10 h-10' />
+                                    )
+                                }
+                                <ChevronDownIcon onClick={() => toggleProfileOpen()} className='w-4 ml-1 text-white' />
                             </div>
 
                         }
@@ -130,7 +135,7 @@ const Header = () => {
                         </div>
                         <div className='flex'>
                             <Link to='/register' className='duration-200 p-4  whitespace-nowrap hover:text-white hover:bg-[#605111]'>Request Account</Link>
-                                <Link to='/sign-in' className='whitespace-nowrap duration-200 p-4 flex hover:text-white hover:bg-[#605111] text-[#665522] font-semibold'>
+                            <Link to='/sign-in' className='whitespace-nowrap duration-200 p-4 flex hover:text-white hover:bg-[#605111] text-[#665522] font-semibold'>
                                 Sign On
                                 <div className='ml-2 pt-[2px]'>
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-4" viewBox="0 0 20 20" fill="currentColor">

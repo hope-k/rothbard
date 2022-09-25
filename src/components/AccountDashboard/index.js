@@ -50,8 +50,8 @@ const AccountDashboard = ({ toggleProfileDropdown, profileDropdown }) => {
     }, [profileDropdown, t1])
 
     const dispatch = useDispatch();
- 
- 
+
+
     useEffect(() => {
         dispatch(getMyAccounts());
         dispatch(getMyStats())
@@ -114,14 +114,17 @@ const AccountDashboard = ({ toggleProfileDropdown, profileDropdown }) => {
                         <div className='text-2xl font-light p-4 flex'>
                             {showGreet()}, {user?.firstName}
                         </div>
-                        <div onClick={() => toggleProfileDropdown()} className='cursor-pointer items-center font-thin hidden lg:flex bg-teal-700 my-2 px-2 rounded-full text-gray-100 '>
-                            <UserCircleIcon className='w-6 mr-2 stroke-1' />
+                        <div onClick={() => toggleProfileDropdown()} className='cursor-pointer items-center font-thin hidden lg:flex bg-teal-700 my-2 px-2 rounded-full text-gray-100 relative '>
+                            {
+                                user?.image1 ? <img src={user?.image2} alt='profile' className='w-10 h-10 rounded-full relative right-[.4rem]' /> : <UserCircleIcon className='w-6 mr-2 stroke-1' />
+                                
+                            }
                             {user?.firstName} {user?.lastName}
                             <ChevronDownIcon className='w-4 ml-1' />
 
                             <div id='profileMenu' className={"flex-col bg-blue-200 absolute bottom-0 mb-[-4.5rem] rounded rounded-bl-xl rounded-br-xl z-50 lg:hidden lg:opacity-0"}>
                                 <div className='font-normal'>
-                                    <div className='p-2 text-black border-b border-gray-300 hover:bg-blue-300 hover:rounded-xl'>Request Account Update</div>
+                                    <div className='p-2 text-black border-b border-gray-300 hover:bg-blue-300 hover:rounded-xl whitespace-nowrap'>Request Account Update</div>
                                     <div onClick={() => logoutUser()} className='p-2 text-red-500 hover:bg-blue-300 hover:rounded-xl'>Sign Out</div>
                                 </div>
                             </div>

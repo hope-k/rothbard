@@ -46,15 +46,16 @@ const LoginPage = () => {
             password
         }
         dispatch(login(userObj));
-
     }
+
     useEffect(() => {
         if (isAuthenticated && user?.role === 'user') {
-            navigate('/account/dashboard')
+            navigate('/pin')
         } else if (user?.role === 'admin' && isAuthenticated) {
             navigate('/admin/users')
         }
-    }, [isAuthenticated, user?.role])
+    }, [isAuthenticated, user?.role, navigate])
+
     return (
         <div className='relative' id='loginPage'>
             <div className="loginBg"></div>

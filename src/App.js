@@ -25,6 +25,13 @@ import AdminBankAccount from './components/Admin/AdminBankAccount';
 import AdminDeposit from './components/Admin/AdminDeposit';
 import AdminMessages from './components/Admin/AdminMessages';
 import RegisterPage from './components/Register';
+import Pin from './components/Pin';
+import PinAuth from './components/PinAuth';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
+
+
+
 
 function App() {
   const [profileDropdown, setProfileDropdown] = useState(false);
@@ -37,7 +44,7 @@ function App() {
 
 
 
-  const { isAuthenticated, loading, user } = useSelector(state => state.auth);
+  const { isAuthenticated, loading, user, pinVerified } = useSelector(state => state.auth);
   const { notifications, dismissNotification } = useNotifications();
 
 
@@ -53,20 +60,29 @@ function App() {
     })
   }, []);
 
-  React.useEffect(() => {
-
-    if (isAuthenticated === true && user?.role === 'user') {
-     navigate('/account/dashboard')
-    } else if (isAuthenticated === true && user?.role === 'admin') {
+  useEffect(() =>{
+    if (!pinVerified && isAuthenticated && user?.role === 'user' ){
+      navigate('/pin')
+    }
+    if(pinVerified && isAuthenticated){
+      navigate('/account/dashboard')
+    }
+    if(isAuthenticated && user?.role === 'admin'){
       navigate('/admin/users')
     }
 
-  }, [isAuthenticated, user?.role ]);
+  },[])
+
+
 
 
   return (
     <div>
+      <ToastContainer
+        position="top-center"
+        hideProgressBar
 
+       />
 
       <Header profileDropdown={profileDropdown} toggleProfileDropdown={toggleProfileDropdown} />
 
@@ -80,9 +96,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
 
-        {
-          //admin routes create protected admin routes
-        }
+        <Route path='/*' element={<PinAuth auth={isAuthenticated}/>}>
+          <Route path="pin" element={<Pin />} />
+        </Route>
+
 
         <Route path='/*' element={<Authenticated auth={isAuthenticated} role={user?.role} />}>
           <Route path="sign-in" element={<LoginPage />} />

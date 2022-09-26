@@ -26,6 +26,23 @@ export const logout = createAsyncThunk('/logout', async () => {
     }
 });
 
+export const verifyPin = createAsyncThunk('/verify-pin', async (pin, { getState }) => {
+    try {
+        const state = getState()
+        const token = state.auth?.token
+        const { data } = await instance.post('/api/verify-pin', { pin }, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        data && console.log(data, '---data')
+        return data
+    } catch (err) {
+        console.log(err)
+        return err.response.data
+    }
+})
+
 
 
 
@@ -37,11 +54,13 @@ export const logout = createAsyncThunk('/logout', async () => {
 const initialState = {
     isAuthenticated: localStorage.getItem('isAuthenticated') ? JSON.parse(localStorage.getItem('isAuthenticated')) : false,
     error: null,
+    pinVerified: false,
     loading: false,
     user: localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : {},
     token: localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null,
-
 }
+
+
 
 const authSlice = createSlice({
     name: 'authSlice',
@@ -70,6 +89,20 @@ const authSlice = createSlice({
         [login.rejected]: (state, action) => {
             state.loading = false
         },
+        [verifyPin.fulfilled]: (state, action) => {
+
+            state.pinVerified = action.payload?.success
+            state.loading = false
+            state.error = action?.payload?.error?.message
+        },
+        [verifyPin.rejected]: (state, action) => {
+            state.error = action.payload?.message
+            state.loading = false
+        },
+        [verifyPin.pending]: (state, action) => {
+            state.loading = true
+        }
+
 
     }
 

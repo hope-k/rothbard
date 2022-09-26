@@ -55,7 +55,7 @@ const DashboardNav = () => {
                 <BsCashCoin className='mr-2 text-2xl text-[#3ebde4]' />
                 Payments
               </Link>
-              <div className='cursor-pointer mb-5 flex items-center   px-6 py-[0.62rem]'>
+              <div onClick={() => window.alert('Remote Deposit Currently Unavailable. Sorry for any inconvenience this may cause. Thank You')} className='cursor-pointer mb-5 flex items-center   px-6 py-[0.62rem]'>
                 <VscRemote className='mr-2 text-2xl text-[#3ebde4]' />
                 Remote Deposits
               </div>

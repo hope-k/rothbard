@@ -252,8 +252,8 @@ const AccountDashboard = ({ toggleProfileDropdown, profileDropdown }) => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className='bg-gray-100 rounded-xl p-4'>
-                                    <h1 className='font-semibold lg:absolute'>Recent Messages</h1>
+                                <div className='bg-gray-100 rounded-xl p-4 relative'>
+                                    <h1 className='font-semibold lg:absolute top-1'>Recent Messages</h1>
                                     {
                                         !recentMessages?.length ?
                                             <div className="px-2 flex items-center justify-center p-4 lg:h-full">
@@ -267,10 +267,10 @@ const AccountDashboard = ({ toggleProfileDropdown, profileDropdown }) => {
 
                                                     <div key={message?._id} className='px-2 flex  p-2 mt-6 relative bg-slate-50 rounded-md shadow-lg'>
                                                         <div className="flex flex-col">
-                                                            <h1 className='font-semibold'>{message?.title}</h1>
-                                                            <h1 className='text-[.92rem] font-[350]'>{message?.text}</h1>
+                                                            <h1 className='font-normal text-[.9rem] border-[1.3px] border-teal-500 w-fit p-[.2rem] rounded-lg '>{message?.title}</h1>
+                                                            <h1 className='text-[.92rem] font-[350] border-l border-yellow-600 pl-1 mt-3 rounded'>{message?.text}</h1>
                                                         </div>
-                                                        <h1 className='absolute right-0 font-extralight text-[.91rem]'>{moment(message?.createdAt).fromNow()}</h1>
+                                                        <h1 className='absolute right-0 font-extralight text-[.81rem]'>{moment(message?.createdAt).fromNow()}</h1>
                                                     </div>
                                                     <hr className='border-b border-gray-200' />
                                                 </>

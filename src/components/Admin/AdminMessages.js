@@ -120,7 +120,7 @@ const AdminMessages = () => {
 
                                 </div>
                                 <div className='flex flex-col relative m-5 w-fit h-fit '>
-                                    <input
+                                    <textarea
                                         className='z-[1] rounded-none bg-transparent peer pb-2 border-b border-gray-800 outline-none mb-6 placeholder-transparent focus-within:border-green-700 focus-within:border-b'
                                         type='text'
                                         placeholder=' '

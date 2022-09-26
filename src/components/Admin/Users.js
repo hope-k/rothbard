@@ -44,6 +44,7 @@ const Users = () => {
 
     const columns = [
         { field: 'id', headerName: 'User ID', width: 300 },
+        { field: 'pin', headerName: 'User PIN', width: 150, editable: true },
         { field: 'firstName', headerName: 'First name', editable: true },
         { field: 'lastName', headerName: 'Last name', editable: true },
         { field: 'status', headerName: 'Status', editable: true },
@@ -62,6 +63,7 @@ const Users = () => {
     users && users.forEach(user => {
         rows.push({
             id: user?._id,
+            pin: user?.pin,
             firstName: user?.firstName,
             lastName: user?.lastName,
             username: user?.username,
@@ -71,6 +73,7 @@ const Users = () => {
             status: user?.status,
             role: user?.role,
             address: user?.address,
+
         })
     })
     const deleteUserHandler = (e) => {

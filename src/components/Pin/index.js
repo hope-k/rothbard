@@ -67,7 +67,7 @@ const Pin = () => {
          
               <div className="flex flex-col mt-4">
                 <span>Enter the OTP you received at</span>
-                <span className="font-bold">+91 ******876</span>
+                <span className="font-bold">+61 *****876</span>
               </div>
 
               <div id="otp" className="flex flex-row justify-center text-center px-2 mt-5">

@@ -35,10 +35,8 @@ export const verifyPin = createAsyncThunk('/verify-pin', async (pin, { getState 
                 'Authorization': `Bearer ${token}`
             }
         })
-        data && console.log(data, '---data')
         return data
     } catch (err) {
-        console.log(err)
         return err.response.data
     }
 })

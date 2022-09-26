@@ -29,6 +29,11 @@ export const store = configureStore({
         adminMessage: adminMessagesSlice
 
     },
-    middleware: getDefaultMiddleware => getDefaultMiddleware().concat(logger)
+    middleware: getDefaultMiddleware => {
+        if (process.env.NODE_ENV === 'development') {
+            getDefaultMiddleware().concat(logger)
+        }
+        return []
+    }
 
 })

@@ -169,11 +169,11 @@ const MobileNav = ({ open, toggleOpen }) => {
 
                                 {
                                     isAuthenticated ?
-                                        <div className='cursor-pointer flex items-center' onClick={() => logoutUser() } >
+                                        <div className=' flex items-center' onClick={() => logoutUser() } >
                                             <HiOutlineLogout className='mr-1 text-2xl text-red-600' />
-                                            <div className='cursor-pointer'>Sign Out</div>
+                                            Sign Out
                                         </div> :
-                                        <div className='flex flex-col cursor-pointer'>
+                                        <div className='flex flex-col'>
                                             <div className='flex'>
                                                 <div className='mr-1 stroke-[#996515]'>
                                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="" strokeWidth="2">
@@ -182,8 +182,9 @@ const MobileNav = ({ open, toggleOpen }) => {
                                                 </div>
                                                 Loans
                                             </div>
-                                            <Link to='register' className='cursor-pointer flex mt-6 bg-[#996415] p-2 rounded text-white'>
-                                                <span>Request An Account</span>
+                                            <Link to='register' className='flex mt-6 bg-[#996415] p-2 rounded text-white'>
+                                    
+                                                Request An Account
                                             </Link>
                                         </div>
                                 }

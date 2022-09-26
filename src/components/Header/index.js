@@ -81,7 +81,7 @@ const Header = () => {
                         </svg>
                     </button>
                     <div className=' text-black text-sm bg-transparent p-2 font-semibold flex rounded-lg items-center z-40 relative '>
-                        <div className={'text-sm bg-slate-100 p-2 rounded-lg ' + (isAuthenticated && 'text-gray-100 bg-teal-500 rounded-full p-4')}>
+                        <div className={'text-sm bg-slate-100 p-2 rounded-lg ' + (isAuthenticated && 'text-gray-100 bg-teal-500 rounded-full p-4 cursor-pointer' )}>
                             {
                                 !loading &&
                                     isAuthenticated ? (
@@ -92,8 +92,8 @@ const Header = () => {
 
                                         <div className={"flex-col bg-blue-300 absolute bottom-0 mb-[-3.9rem] right-0 rounded rounded-bl-xl rounded-br-xl  z-[70] transition duration-500 ease-in-out  " + (profileOpen ? ' block opacity-100  visible w-fit ' : ' invisible  opacity-0 -translate-y-3 ')}>
                                             <div className='font-normal duration-300 bg-blue-300 rounded'>
-                                                <div className='p-2 text-black border-b border-gray-300 hover:bg-blue-300 whitespace-nowrap duration-200'>Request Account Update</div>
-                                                <div onClick={() => logoutUser()} className='p-2 text-red-500 hover:bg-blue-300'>Sign Out</div>
+                                                <div className='p-2 text-black border-b border-gray-300 hover:bg-blue-300 whitespace-nowrap duration-200 cursor-pointer'>Request Account Update</div>
+                                                <div onClick={() => logoutUser()} className='p-2 text-red-500 hover:bg-blue-300 cursor-pointer'>Sign Out</div>
                                             </div>
                                         </div>
                                     </div>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import PinInput from 'react-pin-input';
 import { toast } from 'react-toastify'
-import { verifyPin } from '../../redux/Slices/authSlice';
+import { verifyPin, resetAuthError } from '../../redux/Slices/authSlice';
 import { useNavigate } from 'react-router-dom';
 
 const Pin = () => {
@@ -34,6 +34,7 @@ const Pin = () => {
 
       })
       notify()
+      dispatch(resetAuthError())
     }
 
     if (pinVerified) {

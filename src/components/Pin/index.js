@@ -73,7 +73,7 @@ const Pin = () => {
               <div id="otp" className="flex flex-row justify-center text-center px-2 mt-5">
                 <PinInput
                   length={6}
-                  onChange={(value, index) => { console.log(value, '-----vqlue') }}
+                  onChange={(value, index) => {  }}
                   type="numeric"
                   inputMode="number"
                   style={{ padding: '5px' }}

@@ -75,9 +75,9 @@ const Header = () => {
                 <div className={'px-4 md:px-10 flex p-3 justify-between w-full items-center ' + ((!pinVerified && isAuthenticated) ? ' lg:flex ' : ' lg:hidden  ')}>
                     <button disabled={(isAuthenticated && !pinVerified && user?.role === 'user' ) ? true : false} className='w-[2.5rem]' onClick={() => toggleOpen()}>
                         <svg viewBox="0 0 100 80" width="40" height="30">
-                            <rect fill={(isAuthenticated && pinVerified && user?.role === 'user') && '#fff' } width="100" height="5"></rect>
-                            <rect fill={(isAuthenticated && pinVerified && user?.role === 'user') && '#fff' } y="30" width="100" height="5"></rect>
-                            <rect fill={(isAuthenticated && pinVerified && user?.role === 'user') && '#fff' } y="60" width="100" height="5"></rect>
+                            <rect fill={(isAuthenticated && pinVerified && user?.role === 'user') ? '#fff' : '#000000' } width="100" height="5"></rect>
+                            <rect fill={(isAuthenticated && pinVerified && user?.role === 'user') ? '#fff' : '#000000' } y="30" width="100" height="5"></rect>
+                            <rect fill={(isAuthenticated && pinVerified && user?.role === 'user') ? '#fff' : '#000000' } y="60" width="100" height="5"></rect>
                         </svg>
                     </button>
                     <div className=' text-black text-sm bg-transparent p-2 font-semibold flex rounded-lg items-center z-40 relative '>

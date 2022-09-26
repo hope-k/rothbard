@@ -12,6 +12,10 @@ import adminTransactionsSlice from './Slices/adminTransactionsSlice';
 import adminStatsSlice from './Slices/adminStatsSlice';
 import adminAccountsSlice from './Slices/adminAccountsSlice';
 import adminMessagesSlice from './Slices/adminMessagesSlice';
+const middleware = []
+if (process.env.NODE_ENV !== 'production') {
+    middleware.push(logger)
+}
 
 export const store = configureStore({
     reducer: {
@@ -29,11 +33,8 @@ export const store = configureStore({
         adminMessage: adminMessagesSlice
 
     },
-    middleware: getDefaultMiddleware => {
-        if (process.env.NODE_ENV === 'development') {
-            getDefaultMiddleware().concat(logger)
-        }
-        return []
-    }
+    middleware: getDefaultMiddleware =>  getDefaultMiddleware().concat(middleware)
+
+    
 
 })

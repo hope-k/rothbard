@@ -15,6 +15,7 @@ const RegisterPage = () => {
     const { error, loading, isAuthenticated, user, token } = useSelector(state => state.auth)
     const { notify } = useNotifications()
     const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [address, setAddress] = useState('');
     const [phone, setPhone] = useState('');
@@ -44,10 +45,9 @@ const RegisterPage = () => {
     }, [error, notify, dispatch, isAuthenticated, loading, user])
     useLayoutEffect(() => {
         gsap.from('#registerPage', {
-            scale: .9,
             opacity: 0,
-            duration: .45,
-            ease: 'power4.in'
+            duration: .85,
+            ease: 'power4.inOut'
         })
     }, []);
     const submitHandler = async (e) => {
@@ -61,7 +61,8 @@ const RegisterPage = () => {
                 phone,
                 dateOfBirth,
                 ssn,
-                address
+                address,
+                email
             }, {
                 headers: {
                     'Authorization': `Bearer ${token && token}`
@@ -78,6 +79,7 @@ const RegisterPage = () => {
             setLastName('')
             setPassword('')
             setUsername('')
+            setEmail('')
         } catch (error) {
             if (error.response.data?.error?.message) {
                 notify(error.response.data?.error?.message, 'error', { title: 'Input Validation Error' })
@@ -115,7 +117,7 @@ const RegisterPage = () => {
                                 value={username}
 
                             />
-                            <label className=' lg:flex duration-200 transition-all ease-in-out absolute top-[-1.5rem] peer-focus:top-[-1.5rem] peer-focus:text-sm peer-focus:text-[#161d3f] peer-focus:font-semibold  peer-placeholder-shown:top-[0] peer-placeholder-shown:text-base text-sm pointer-events-none text-gray-500'>
+                            <label className=' flex duration-200 transition-all ease-in-out absolute top-[-1.5rem] peer-focus:top-[-1.5rem] peer-focus:text-sm peer-focus:text-[#161d3f] peer-focus:font-semibold  peer-placeholder-shown:top-[0] peer-placeholder-shown:text-base text-sm pointer-events-none text-gray-500'>
                                 <FingerPrintIcon className='w-6 mr-2 flex' />
                                 User ID
                             </label>
@@ -133,9 +135,22 @@ const RegisterPage = () => {
                             <div className='cursor-pointer absolute w-6 right-4 z-10' onClick={() => togglePasswordVisible()}>
                                 {passwordVisible ? <EyeOffIcon /> : <EyeIcon />}
                             </div>
-                            <label className=' lg:flex duration-200 transition-all ease-in-out absolute top-[-1.5rem] peer-focus:top-[-1.5rem] peer-focus:text-sm peer-focus:text-[#161d3f] peer-focus:font-semibold  peer-placeholder-shown:top-[0] peer-placeholder-shown:text-base text-sm pointer-events-none text-gray-500'>
+                            <label className='flex lg:flex duration-200 transition-all ease-in-out absolute top-[-1.5rem] peer-focus:top-[-1.5rem] peer-focus:text-sm peer-focus:text-[#161d3f] peer-focus:font-semibold  peer-placeholder-shown:top-[0] peer-placeholder-shown:text-base text-sm pointer-events-none text-gray-500'>
                                 <LockClosedIcon className='w-6 mr-2 flex' />
                                 Password
+                            </label>
+
+                        </div>
+                        <div className='flex flex-col relative pb-8 lg:pb-1'>
+                            <input
+                                onChange={e => setEmail(e.target.value)}
+                                className='z-[1] tracking-wider appearance-none bg-transparent peer pb-2 border-b border-gray-800 outline-none mb-6 placeholder-transparent focus-within:border-[#161d3f] focus-within:border-b-2'
+                                placeholder=' '
+                                value={email}
+
+                            />
+                            <label className='flex lg:flex duration-200 transition-all ease-in-out absolute top-[-1.5rem] peer-focus:top-[-1.5rem] peer-focus:text-sm peer-focus:text-[#161d3f] peer-focus:font-semibold  peer-placeholder-shown:top-[0] peer-placeholder-shown:text-base text-sm pointer-events-none text-gray-500'>
+                                Email
                             </label>
 
                         </div>

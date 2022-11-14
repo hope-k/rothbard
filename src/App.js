@@ -34,6 +34,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 
 function App() {
+
   const [profileDropdown, setProfileDropdown] = useState(false);
   const toggleProfileDropdown = () => {
     setProfileDropdown(!profileDropdown)
@@ -60,74 +61,82 @@ function App() {
     })
   }, []);
 
-  useEffect(() =>{
-    if (!pinVerified && isAuthenticated && user?.role === 'user' ){
+  useEffect(() => {
+    if (!pinVerified && isAuthenticated && user?.role === 'user') {
       navigate('/pin')
     }
-    if(pinVerified && isAuthenticated){
+    if (pinVerified && isAuthenticated) {
       navigate('/account/dashboard')
     }
-    if(isAuthenticated && user?.role === 'admin'){
+    if (isAuthenticated && user?.role === 'admin') {
       navigate('/admin/users')
     }
 
-  },[])
+  }, [])
 
 
 
 
   return (
     <div>
-      <ToastContainer
-        position="top-center"
-        hideProgressBar
+        <ToastContainer
+          position="top-center"
+          hideProgressBar
 
-       />
-
-      <Header profileDropdown={profileDropdown} toggleProfileDropdown={toggleProfileDropdown} />
-
-      <NotificationsSystem
-        notifications={notifications}
-        dismissNotification={dismissNotification}
-        theme={wyboTheme}
-
-      />
-
-      <Routes>
-        <Route path="/" element={<Home />} />
-
-        <Route path='/*' element={<PinAuth auth={isAuthenticated}/>}>
-          <Route path="pin" element={<Pin />} />
-        </Route>
+        />
 
 
-        <Route path='/*' element={<Authenticated auth={isAuthenticated} role={user?.role} />}>
-          <Route path="sign-in" element={<LoginPage />} />
-          <Route path="register" element={<RegisterPage />} />
-        </Route>
+        <NotificationsSystem
+          notifications={notifications}
+          dismissNotification={dismissNotification}
+          theme={wyboTheme}
 
+        />
 
-        <Route path='/*' element={<ProtectedRoute auth={isAuthenticated} authLoading={loading} role={user?.role} />}>
-          <Route path="account" element={<DashboardNav />}>
-            <Route path="dashboard" element={<AccountDashboard profileDropdown={profileDropdown} toggleProfileDropdown={toggleProfileDropdown} />} />
-            <Route path="transfer" element={<Transfer />} />
-            <Route path="transactions" element={<Transactions />} />
-            <Route path="messages" element={<Messages />} />
-            <Route path="payments" element={<Payments />} />
+        <Header profileDropdown={profileDropdown} toggleProfileDropdown={toggleProfileDropdown} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path='/*' element={<PinAuth auth={isAuthenticated} />}>
+            <Route path="pin" element={<Pin />} />
           </Route>
-        </Route>
 
-        <Route path='/*' element={<ProtectedAdminRoute role={user?.role} authLoading={loading} auth={isAuthenticated} />}>
-          <Route path='admin' element={<AdminDashboard />}>
-            <Route path='users' element={<Users />} />
-            <Route path='transactions' element={<AdminTransactions />} />
-            <Route path='statistics' element={<AdminStats />} />
-            <Route path='accounts' element={<AdminBankAccount />} />
-            <Route path='deposit' element={<AdminDeposit />} />
-            <Route path='messages' element={<AdminMessages />} />
+
+          <Route path='/*' element={<Authenticated auth={isAuthenticated} role={user?.role} />}>
+            <Route path="sign-in" element={<LoginPage />} />
+            <Route path="register" element={<RegisterPage />} />
           </Route>
-        </Route>
-      </Routes>
+
+
+          <Route path='/*' element={<ProtectedRoute auth={isAuthenticated} authLoading={loading} role={user?.role} />}>
+            <Route path="account" element={<DashboardNav />}>
+              <Route path="dashboard" element={<AccountDashboard profileDropdown={profileDropdown} toggleProfileDropdown={toggleProfileDropdown} />} />
+              <Route path="transfer" element={<Transfer />} />
+              <Route path="transactions" element={<Transactions />} />
+              <Route path="messages" element={<Messages />} />
+              <Route path="payments" element={<Payments />} />
+            </Route>
+          </Route>
+
+          <Route path='/*' element={<ProtectedAdminRoute role={user?.role} authLoading={loading} auth={isAuthenticated} />}>
+            <Route path='admin' element={<AdminDashboard />}>
+              <Route path='users' element={<Users />} />
+              <Route path='transactions' element={<AdminTransactions />} />
+              <Route path='statistics' element={<AdminStats />} />
+              <Route path='accounts' element={<AdminBankAccount />} />
+              <Route path='deposit' element={<AdminDeposit />} />
+              <Route path='messages' element={<AdminMessages />} />
+            </Route>
+          </Route>
+        </Routes>
+
+
+
+
+
+
+
+
+
     </div>
   );
 }

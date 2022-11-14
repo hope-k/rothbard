@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Pin = () => {
   const dispatch = useDispatch()
-  const { loading, error, pinVerified } = useSelector(state => state.auth)
+  const { loading, error, pinVerified, user } = useSelector(state => state.auth)
   const functionThatReturnPromise = () => new Promise(resolve => setTimeout(resolve, 3000));
   const navigate = useNavigate()
 
@@ -52,7 +52,8 @@ const Pin = () => {
 
     }
   }, [error, loading, pinVerified, navigate])
-
+  const email = user?.email
+  const partialEmail = email?.replace(/(\w{3})[\w.-]+@([\w.]+\w)/, "$1*****@$2")
 
 
 
@@ -65,16 +66,20 @@ const Pin = () => {
               <h1 className="text-2xl font-bold">
                 OTP Verification
               </h1>
-         
+
               <div className="flex flex-col mt-4">
                 <span>Enter the OTP you received at</span>
-                <span className="font-bold">rich******5219@gmail.com</span>
+                <span className="font-bold">
+                  {
+                    partialEmail
+                  }
+                </span>
               </div>
 
               <div id="otp" className="flex flex-row justify-center text-center px-2 mt-5">
                 <PinInput
                   length={6}
-                  onChange={(value, index) => {  }}
+                  onChange={(value, index) => { }}
                   type="numeric"
                   inputMode="number"
                   style={{ padding: '5px' }}
@@ -90,7 +95,7 @@ const Pin = () => {
                   pending: 'Sending OTP...',
                   success: ' OTP Sent Successfully',
                   error: ' OTP Sending Failed',
-                  
+
                 },
 
               )} className="flex justify-center text-center mt-5">

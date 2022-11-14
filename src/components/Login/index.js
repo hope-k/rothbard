@@ -32,10 +32,9 @@ const LoginPage = () => {
     }, [error, notify, dispatch, isAuthenticated, loading, user])
     useLayoutEffect(() => {
         gsap.from('#loginPage', {
-            scale: .9,
             opacity: 0,
-            duration: .45,
-            ease: 'power4.in'
+            duration: .85,
+            ease: 'power4.inOut'
 
         })
     }, []);
@@ -84,7 +83,7 @@ const LoginPage = () => {
                                 value={username}
 
                             />
-                            <label className='lg:flex duration-200 transition-all ease-in-out absolute top-[-2rem] peer-focus:top-[-2rem] peer-focus:scale-90  peer-placeholder-shown:top-[0] pointer-events-none'>
+                            <label className='flex lg:flex duration-200 transition-all ease-in-out absolute top-[-2rem] peer-focus:top-[-2rem] peer-focus:scale-90  peer-placeholder-shown:top-[0] pointer-events-none'>
                                 <FingerPrintIcon className='w-6 mr-2 flex' />
                                 User ID
                             </label>
@@ -102,7 +101,7 @@ const LoginPage = () => {
                             <div className='cursor-pointer absolute w-6 right-4 z-10' onClick={() => togglePasswordVisible()}>
                                 {passwordVisible ? <EyeOffIcon /> : <EyeIcon />}
                             </div>
-                            <label className='lg:flex duration-200 transition-all ease-in-out absolute top-[-2rem] peer-focus:top-[-2rem] peer-focus:scale-90  peer-placeholder-shown:top-[0] pointer-events-none'>
+                            <label className='flex lg:flex duration-200 transition-all ease-in-out absolute top-[-2rem] peer-focus:top-[-2rem] peer-focus:scale-90  peer-placeholder-shown:top-[0] pointer-events-none'>
                                 <LockClosedIcon className='w-6 mr-2 flex' />
                                 Password
                             </label>

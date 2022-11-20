@@ -24,7 +24,7 @@ const Home = () => {
                     <Parallax
                         className='homeBg'
                         strength={700}
-                    >
+                        bgImage='https://res.cloudinary.com/hopekumordzie/image/upload/v1663938655/tablechat_ri3cgr.jpg'                    >
                         <Background className="custom-bg">
                             <div
                                 style={{
@@ -36,7 +36,7 @@ const Home = () => {
                                     backgroundAttachment: 'fixed',
                                     backgroundPosition: 'center center',
                                     backgroundImage: "linear-gradient(to right, rgba(8, 15, 110, 0.5), rgba(90, 142, 219, 0.53)), url('https://res.cloudinary.com/hopekumordzie/image/upload/v1663938655/tablechat_ri3cgr.jpg')"
-   
+
                                 }}
                             />
                         </Background>

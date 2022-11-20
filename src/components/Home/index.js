@@ -23,7 +23,7 @@ const Home = () => {
                 <div className='relative h-screen md:h-[100vh] bg-teal-500 lg:overflow-hidden'>
                     <Parallax
                         className='homeBg'
-                        strength={800}
+                        strength={700}
                     >
                         <Background className="custom-bg">
                             <div

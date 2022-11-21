@@ -34,7 +34,7 @@ const Home = () => {
 
                             <h1 className='text-4xl pb-8 text-[#f0f0f0] lora md:max-w-lg tracking-normal font-semibold'>Welcome to the <span className='border-b border-yellow-600 font-medium tracking-tight  mb-2'>Hackett Hill Capital</span>. Your Next Experience In Trust.</h1>
                             <p className='max-w-[75ch] text-[16px] text-[#C0C0C0] tracking-wide lg:mb-6'>
-                                Hacket Hill Capital is the new reality of banking. Everything you need to build you financial future all in one place.
+                                Hackett Hill Capital is the new reality of banking. Everything you need to build you financial future all in one place.
                                 The easiest way to manage personal finance.
                                 Send and receive money all over the world
                                 Our mission is to make you succeed both in your business income management and your personal finances.

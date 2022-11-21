@@ -36,10 +36,15 @@ body {
 
 
 .homeBg {
-
   width: 100%;
   height: 105vh;
-
+  background-repeat: no-repeat;
+  filter: brightness(50%);
+  background-size: cover;
+  position: absolute;
+  background-position: center center;
+  background-image: linear-gradient(to right, rgba(8, 15, 110, 0.5), rgba(90, 142, 219, 0.53)),
+    url('https://res.cloudinary.com/hopekumordzie/image/upload/v1663938655/tablechat_ri3cgr.jpg');
 }
 
 .loginBg {

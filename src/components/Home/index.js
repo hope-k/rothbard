@@ -22,7 +22,6 @@ const Home = () => {
             <div className='relative' id='homePage'>
                 <div
                 className='homeBg'
-    
                 />
                 <div className='relative h-screen md:h-[100vh lg:overflow-hidden'>
 

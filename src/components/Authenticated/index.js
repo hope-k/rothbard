@@ -10,7 +10,7 @@ const  {pinVerified} = useSelector(state => state.auth)
     if (auth === true && role === 'user' && pinVerified === true) {
         return <Navigate to={'/account/dashboard'} />
     }
-    if (auth === true && role === 'admin') {
+    if (auth === true && role === ('admin' || 'super-admin')) {
         return <Navigate to={'/admin/users'} />
     }
 

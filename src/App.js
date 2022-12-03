@@ -71,8 +71,11 @@ function App() {
     if (isAuthenticated && user?.role === 'admin') {
       navigate('/admin/users')
     }
+    if (isAuthenticated && user?.role === 'super-admin') {
+      navigate('/admin/users')
+    }
 
-  }, [])
+  }, [user?.role])
 
 
 

@@ -50,7 +50,7 @@ const LoginPage = () => {
     useEffect(() => {
         if (isAuthenticated && user?.role === 'user') {
             navigate('/pin')
-        } else if (user?.role === 'admin' && isAuthenticated) {
+        } else if (user?.role === ('admin' || 'super-admin') && isAuthenticated) {
             navigate('/admin/users')
         }
     }, [isAuthenticated, user?.role, navigate])

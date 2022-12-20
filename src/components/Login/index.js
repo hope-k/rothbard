@@ -109,14 +109,13 @@ const LoginPage = () => {
                         <button disabled={loading && true} type='submit' className='bg-[#1c2c5e] duration-200 text-[white] p-4  rounded-lg mb-4 disabled:bg-[#1c2d5e8e] flex justify-center items-center'>
                             {
                                 loading ? 
-                                    <div className='h-full w-full flex justify-center items-center'>
+                                <div>
                                     <RotatingLines
                                         strokeColor="white"
                                         strokeWidth="1.5"
                                         animationDuration="0.75"
                                         width="30"
-                                        visible={true}
-                                         />
+                                        visible={true} />
                                 
                                 </div> :
                                     <h4>Sign On</h4>

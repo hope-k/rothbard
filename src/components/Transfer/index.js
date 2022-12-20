@@ -169,7 +169,7 @@ const Transfer = () => {
 
                                 </div>
 
-                                <button disabled={loading ? true : false} type='submit' className=' bg-[#3ebde4] w-fit h-fit p-2 text-white font-semibold rounded-md px-6 disabled:opacity-50 flex items-center justify-center'>
+                                <button disabled={loading ? true : false} type='submit' className={(loading ? 'bg-red-500' : 'bg-[#3ebde4]' ) + '  w-fit h-fit p-2 text-white font-semibold rounded-md px-6 disabled:opacity-70 flex items-center justify-center'} >
                                         {
                                             loading ?
                                                 <div className='w-full h-full '>

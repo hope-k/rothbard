@@ -43,7 +43,7 @@ const MobileNav = ({ open, toggleOpen }) => {
 
 
     return (
-        <div id='menu' className='bg-slate-100 h-[100vh] w-[70%] fixed top-0 px-0 lg:hidden z-[81] translate-x-[-100%]'>
+        <div id='menu' className='bg-slate-100 h-[98%] w-[70%] fixed top-0 px-0 lg:hidden z-[81] translate-x-[-100%] rounded-tr-2xl rounded-br-2xl my-[2%] drop-shadow-xl'>
             <div className='px-4 mt-2'>
                 <div className='w-8 fixed right-0 top-4 mr-3 z-[1]' onClick={() => toggleOpen()}>
                     <XIcon />
@@ -79,7 +79,7 @@ const MobileNav = ({ open, toggleOpen }) => {
                         <div onClick={() => logoutUser()} className='text-red-500 cursor-pointer my-4'>Log Out</div>
                     </div>
                     :
-                    <div className='container w-full flex flex-col h-full pt-[8rem] overflow-y-scroll'>
+                    <div className='container w-full flex flex-col h-full pt-[8rem]'>
                         <div className='font-semibold w-full'>
                             <Link to={'/'} onClick={() => toggleOpen()} className={'duration-500 px-6 py-[0.62rem]  mb-8  flex ' + (isAuthenticated && 'hidden')}>
                                 <div className='mr-1 stroke-[#996515]'>

@@ -1,21 +1,18 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import MobileNav from '../MobileNav'
 import { LocationMarkerIcon } from '@heroicons/react/solid'
 import { useDispatch, useSelector } from 'react-redux'
-import { UserCircleIcon, ChevronDownIcon } from '@heroicons/react/outline'
-import { useNavigate } from 'react-router-dom'
+import { ChevronDownIcon } from '@heroicons/react/outline'
 import { logout } from '../../redux/Slices/authSlice'
-import gsap from 'gsap'
 
 const Header = () => {
+  
     const [profileOpen, setProfileOpen] = useState(false)
     const dispatch = useDispatch()
     const { user, loading, isAuthenticated , pinVerified} = useSelector(state => state.auth)
-    const navigate = useNavigate()
-    const location = useLocation()
+   
     const [open, setOpen] = useState(false);
-    const t1 = useRef()
 
     const toggleOpen = () => {
         setOpen(!open)
@@ -29,6 +26,8 @@ const Header = () => {
         dispatch(logout());
         window.location.reload()
     }
+
+ 
 
 
     return (
@@ -73,11 +72,11 @@ const Header = () => {
             }
             <div className={'drop-shadow-xl border-b-[.4px] border-slate-500 flex font-base text-base sticky top-0 z-[60] h-[3.5rem] ' + ((isAuthenticated && !pinVerified && user?.role === 'user') && 'bg-slate-200' ) + (isAuthenticated && pinVerified ? ' bg-transparent border-none ' : ' bg-[#fff] ') + (isAuthenticated && user?.role?.includes('admin') && ' flex lg:hidden ')}>
                 <div className={'px-4 md:px-10 flex p-3 justify-between w-full items-center ' + ((!pinVerified && isAuthenticated) ? ' lg:flex ' : ' lg:hidden  ')}>
-                    <button disabled={(isAuthenticated && !pinVerified && user?.role === 'user' ) ? true : false} className='w-[2.5rem]' onClick={() => toggleOpen()}>
+                    <button disabled={(isAuthenticated && !pinVerified && user?.role === 'user' ) ? true : false} className='w-[2.5rem] p-1 relative z-[50]' onClick={() => toggleOpen()}>
                         <svg viewBox="0 0 100 80" width="40" height="30">
-                            <rect fill={(isAuthenticated && pinVerified && user?.role === 'user') ? '#fff' : '#000000' } width="100" height="5"></rect>
-                            <rect fill={(isAuthenticated && pinVerified && user?.role === 'user') ? '#fff' : '#000000' } y="30" width="100" height="5"></rect>
-                            <rect fill={(isAuthenticated && pinVerified && user?.role === 'user') ? '#fff' : '#000000' } y="60" width="100" height="5"></rect>
+                            <rect fill={(isAuthenticated && pinVerified && user?.role === 'user') ? '#000' : '#000000' } width="100" height="5"></rect>
+                            <rect fill={(isAuthenticated && pinVerified && user?.role === 'user') ? '#000' : '#000000' } y="30" width="100" height="5"></rect>
+                            <rect fill={(isAuthenticated && pinVerified && user?.role === 'user') ? '#000' : '#000000' } y="60" width="100" height="5"></rect>
                         </svg>
                     </button>
                     <div className=' text-black text-sm bg-transparent p-2 font-semibold flex rounded-lg items-center z-40 relative '>
@@ -113,8 +112,8 @@ const Header = () => {
                             isAuthenticated &&
                             <div className='ml-2 flex' >
                                 {
-                                    user?.image2 ? (
-                                        <img onClick={() => toggleProfileOpen()} src={user?.image2} alt='profile' className='w-10 h-10' />
+                                    user?.image ? (
+                                        <img onClick={() => toggleProfileOpen()} src={user?.image} alt='profile' className='w-10 h-10' />
                                     ) : null
                                 }
                                 <ChevronDownIcon onClick={() => toggleProfileOpen()} className='w-4 ml-1 text-white' />

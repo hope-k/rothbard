@@ -5,11 +5,12 @@ import NumberFormat from 'react-number-format'
 import { getMyAccounts } from '../../redux/Slices/accountsSlice'
 import accounting from 'accounting'
 import { makeTransfer, resetTransferSuccess, resetTransferError } from '../../redux/Slices/transferSlice'
-import { useNotifications } from 'reapop'
+import { useNotifications,   } from 'reapop'
 import { useNavigate } from 'react-router-dom'
 import FadeLoader from 'react-spinners/FadeLoader'
 import { RotatingLines } from 'react-loader-spinner'
-
+import Lottie from 'lottie-react'
+import transferLoader from '../../animations/transferLoader.json'
 const Transfer = () => {
     const navigate = useNavigate()
     const { notify } = useNotifications()
@@ -19,11 +20,11 @@ const Transfer = () => {
 
 
         if (error) {
-            notify(error, { title: 'Transaction Error', status: 'error' })
+            notify(error, { title: 'An error occurred while trying to process your transaction', status: 'error', id: 'transfer'  })
             dispatch(resetTransferError())
         }
         if (success) {
-            notify('Transaction Approved and is Being Processed', { title: 'Transaction Being Processed', status: 'success' })
+            notify('Transaction Approved and is Being Processed', { title: 'Transaction Being Processed', status: 'success', id: 'transfer' })
             dispatch(resetTransferSuccess());
             navigate('/account/transactions');
         }
@@ -35,7 +36,8 @@ const Transfer = () => {
 
     useEffect(() => {
         if (loading) {
-            notify('Processing Transaction...', 'loading', { dismissible: false })
+            notify('Processing Transaction...', 'loading', { dismissible: false, id: 'transfer' },)
+
         }
     }, [loading, notify])
 
@@ -167,21 +169,17 @@ const Transfer = () => {
 
                                 </div>
 
-                                <button disabled={loading ? true : false} type='submit' className=' bg-[#3ebde4] w-fit h-fit p-2 text-white font-semibold rounded-md px-6 disabled:opacity-50'>
-                                    <div>
-                                    {
-                                        loading ? 
-                                        <RotatingLines
-                                            strokeColor="white"
-                                            strokeWidth="1.5"
-                                            animationDuration="0.75"
-                                            width="30"
-                                            visible={true}
-                                        />
-                                        :
-                                        'Transfer'
-                                    }
-                                    </div>
+                                <button disabled={loading ? true : false} type='submit' className=' bg-[#3ebde4] w-fit h-fit p-2 text-white font-semibold rounded-md px-6 disabled:opacity-50 flex items-center justify-center'>
+                                        {
+                                            loading ?
+                                                <div className='w-full h-full '>
+                                                    <Lottie
+                                                        animationData={transferLoader}
+                                                    />
+                                                </div>
+                                                :
+                                            <span>Transfer</span>
+                                        }
                                 </button>
                             </div>
                         </form>

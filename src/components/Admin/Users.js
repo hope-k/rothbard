@@ -48,6 +48,7 @@ const Users = () => {
         { field: 'firstName', headerName: 'First name', editable: true },
         { field: 'lastName', headerName: 'Last name', editable: true },
         { field: 'status', headerName: 'Status', editable: true },
+        { field: 'image', headerName: 'Image', editable: true, width: 250 },
         { field: 'username', headerName: 'User Name', editable:true },
         { field: 'email', headerName: 'Email', editable:true },
         { field: 'role', headerName: 'Role', editable: true },
@@ -74,7 +75,8 @@ const Users = () => {
             status: user?.status,
             role: user?.role,
             address: user?.address,
-            email: user?.email
+            email: user?.email,
+            image: user?.image
 
         })
     })

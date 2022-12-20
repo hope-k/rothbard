@@ -8,7 +8,7 @@ import { useNotifications } from 'reapop'
 import { resetAuthError } from '../../redux/Slices/authSlice'
 import FadeLoader from 'react-spinners/FadeLoader'
 import { useNavigate } from 'react-router-dom'
-
+import { RotatingLines } from 'react-loader-spinner'
 
 const LoginPage = () => {
     const { error, loading, isAuthenticated, user } = useSelector(state => state.auth)
@@ -69,9 +69,8 @@ const LoginPage = () => {
                                 </svg>
                             </div>
                         </h1>
-                        {
-                            loading && <FadeLoader css={{ color: 'red' }} height={10} width={20} margin={1} color='#fff' />
-                        }
+
+
                     </div>
                     <form className='flex flex-col mx-6 pb-28' onSubmit={submitHandler}>
                         <div className='flex flex-col relative mb-10 lg:mb-8'>
@@ -107,8 +106,21 @@ const LoginPage = () => {
                             </label>
 
                         </div>
-                        <button disabled={loading && true} type='submit' className='bg-[#1c2c5e] text-[white] p-3 rounded-lg mb-4 disabled:bg-[#1c2d5e8e]'>
-                            Sign On
+                        <button disabled={loading && true} type='submit' className='bg-[#1c2c5e] duration-200 text-[white] p-4  rounded-lg mb-4 disabled:bg-[#1c2d5e8e] flex justify-center items-center'>
+                            {
+                                loading ? 
+                                    <div className='h-full w-full flex justify-center items-center'>
+                                    <RotatingLines
+                                        strokeColor="white"
+                                        strokeWidth="1.5"
+                                        animationDuration="0.75"
+                                        width="30"
+                                        visible={true}
+                                         />
+                                
+                                </div> :
+                                    <h4>Sign On</h4>
+                            }
                         </button>
 
                     </form>

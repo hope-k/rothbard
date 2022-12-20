@@ -26,7 +26,10 @@ import accounting from 'accounting'
 import { logout } from '../../redux/Slices/authSlice'
 
 const AccountDashboard = ({ toggleProfileDropdown, profileDropdown }) => {
-
+    const stickyElement = useRef(null);
+    const observer = useRef(null);
+    const root = useRef(null);
+    const [dashTextOpacity, setDashTextOpacity] = useState(1)
     const navigate = useNavigate()
     const t1 = useRef()
     const { isAuthenticated, token } = useSelector(state => state.auth)
@@ -106,17 +109,33 @@ const AccountDashboard = ({ toggleProfileDropdown, profileDropdown }) => {
     const recentTransactions = transactions && transactions.slice(0, 4)
     const recentMessages = messages && messages && messages.slice(0, 2)
 
+    useEffect(() => {
+        const handleScroll = () => {
+            const rect = stickyElement.current.getBoundingClientRect();
+            if (rect.top <= 0) {
+                // The sticky element has reached the top, so you can perform your action here
+                setDashTextOpacity(0)
+            } else {
+                setDashTextOpacity(1)
+            }
+        }
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
     return (
         <>
-            <div className='lg:w-[83.6%] lg:absolute lg:right-0 z-[80] relative'>
+            <div className='lg:w-[83.6%] lg:absolute lg:right-0 relative'>
                 <div className='lg:px-10  relative px-4 '>
-                    <div className='flex bg-blue-200 my-16 justify-between lg:px-[7rem] rounded-md mx-4 relative z-50'>
+                    <div className='flex bg-blue-200 my-16 justify-between lg:px-[7rem] rounded-md mx-4 relative z-40'>
                         <div className='text-2xl font-light p-4 flex'>
                             {showGreet()}, {user?.firstName}
                         </div>
                         <div onClick={() => toggleProfileDropdown()} className='cursor-pointer items-center font-thin hidden lg:flex bg-teal-700 my-2 px-2 rounded-full text-gray-100 relative '>
                             {
-                                user?.image1 ? <img src={user?.image2} alt='profile' className='w-10 h-10 rounded-full relative right-[.4rem]' /> : <UserCircleIcon className='w-6 mr-2 stroke-1' />
+                                user?.image ? <img src={user?.image} alt='profile' className='w-10 h-10 rounded-full relative right-[.4rem]' /> : <UserCircleIcon className='w-6 mr-2 stroke-1' />
                                 
                             }
                             {user?.firstName} {user?.lastName}
@@ -131,9 +150,9 @@ const AccountDashboard = ({ toggleProfileDropdown, profileDropdown }) => {
                         </div>
 
                     </div>
-                    <div className='container  lg:px-[7rem] pb-[4rem] rounded-xl z-40 relative '>
-                        <div className='sticky top-0 my-16 bg-gray-100 rounded  text-gray-500 flex items-center p-4 justify-between lg:px-6 z-[60]'>
-                            <h1 className=' text-md font-semi  flex items-center'>
+                    <div ref={root} className='container lg:px-[7rem] pb-[4rem] rounded-xl z-40 relative  '>
+                        <div ref={stickyElement}  className={'sticky top-0 my-16 bg-gray-100 rounded  text-gray-500 flex items-center p-4 justify-between lg:px-6 z-[60] ' + (dashTextOpacity === 0 && 'shadow-2xl')}>
+                            <h1 className={`text-md font-semi  flex items-center  duration-300 ` + (dashTextOpacity === 0 ? 'opacity-0 ' : 'opacity-100 ')}>
                                 Dashboard
                                 <MdAccountBalance className='ml-2' />
                             </h1>
@@ -144,7 +163,7 @@ const AccountDashboard = ({ toggleProfileDropdown, profileDropdown }) => {
 
                                     )
                                 }
-                                <BellIcon className='w-6' />
+                                <BellIcon className={'w-6 lg:opacity-100 ' + (dashTextOpacity === 0 ? 'opacity-0 ' : 'opacity-100 ')} />
                             </Link>
                         </div>
                         <div className=''>

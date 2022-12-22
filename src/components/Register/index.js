@@ -15,6 +15,7 @@ import {RotatingLines} from 'react-loader-spinner'
 
 const RegisterPage = () => {
     const { error, loading, isAuthenticated, user, token } = useSelector(state => state.auth)
+    const [registerLoading, setRegisterLoading] = useState(false);
     const { notify } = useNotifications()
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
@@ -56,6 +57,7 @@ const RegisterPage = () => {
     const submitHandler = async (e) => {
         e.preventDefault();
         try {
+            setRegisterLoading(true);
             const { data } = await instance.post('/api/register', {
                 firstName,
                 lastName,
@@ -73,6 +75,7 @@ const RegisterPage = () => {
                 }
             });
             if (data?.success) {
+                setRegisterLoading(false);
                 notify('Request for account is being processed you will be contacted by the bank', 'success')
             }
             setPhone('')
@@ -84,7 +87,9 @@ const RegisterPage = () => {
             setPassword('')
             setUsername('')
             setEmail('')
+            setImage(null)
         } catch (error) {
+            setRegisterLoading(false);
             if (error.response.data?.error?.message) {
                 notify(error.response.data?.error?.message, 'error', { title: 'Input Validation Error' })
             }
@@ -303,9 +308,9 @@ const RegisterPage = () => {
                                 )
                             }
                         </motion.div>
-                        <button disabled={loading && true} type='submit' className='bg-[#1c2c5e] text-[white] p-3 rounded-lg mb-4 disabled:bg-[#1c2d5e8e]'>
+                        <button disabled={registerLoading && true} type='submit' className='duration-400 flex justify-center items-center bg-[#1c2c5e] text-[white] p-3 rounded-lg mb-4 disabled:bg-[#1c2d5e8e]'>
                             {
-                                loading ?
+                                registerLoading ?
                                     <div>
                                         <RotatingLines
                                             strokeColor="white"

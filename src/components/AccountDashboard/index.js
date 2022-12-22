@@ -24,10 +24,10 @@ import ClockLoader from 'react-spinners/ClockLoader'
 import { getMyMessages } from '../../redux/Slices/messagesSlice'
 import accounting from 'accounting'
 import { logout } from '../../redux/Slices/authSlice'
+import { motion } from 'framer-motion'
 
 const AccountDashboard = ({ toggleProfileDropdown, profileDropdown }) => {
     const stickyElement = useRef(null);
-    const observer = useRef(null);
     const root = useRef(null);
     const [dashTextOpacity, setDashTextOpacity] = useState(1)
     const navigate = useNavigate()
@@ -130,13 +130,24 @@ const AccountDashboard = ({ toggleProfileDropdown, profileDropdown }) => {
             <div className='lg:w-[83.6%] lg:absolute lg:right-0 relative'>
                 <div className='lg:px-10  relative px-4 '>
                     <div className='flex bg-blue-200 my-16 justify-between lg:px-[7rem] rounded-md mx-4 relative z-40'>
-                        <div className='text-2xl font-light p-4 flex'>
+                        <motion.div
+                            initial={{ y: 15, opacity: 0 }}
+                            whileInView={{ y: 0, opacity: 1 }}
+                            transition={{ duration: 0.85, ease: 'easeInOut' }}
+                            className='text-2xl font-light p-4 flex'>
                             {showGreet()}, {user?.firstName}
-                        </div>
+                        </motion.div>
                         <div onClick={() => toggleProfileDropdown()} className='cursor-pointer items-center font-thin hidden lg:flex bg-teal-700 my-2 px-2 rounded-full text-gray-100 relative '>
                             {
-                                user?.image ? <img src={user?.image} alt='profile' className='w-10 h-10 rounded-full relative right-[.4rem]' /> : <UserCircleIcon className='w-6 mr-2 stroke-1' />
-                                
+                                user?.image?.url ? <motion.img
+                                    initial={{ x: 15, opacity: 0.1 }}
+                                    whileInView={{ x: 0, opacity: 1 }}
+                                    transition={{ duration: 0.5 }}
+                                    src={user?.image?.url}
+                                    alt='profile'
+                                    className='w-12 h-12 rounded-full relative right-[.4rem]'
+                                /> : null
+
                             }
                             {user?.firstName} {user?.lastName}
                             <ChevronDownIcon className='w-4 ml-1' />
@@ -151,7 +162,7 @@ const AccountDashboard = ({ toggleProfileDropdown, profileDropdown }) => {
 
                     </div>
                     <div ref={root} className='container lg:px-[7rem] pb-[4rem] rounded-xl z-40 relative  '>
-                        <div ref={stickyElement}  className={'sticky top-0 my-16 bg-gray-100 rounded  text-gray-500 flex items-center p-4 justify-between lg:px-6 z-[60] ' + (dashTextOpacity === 0 && 'shadow-2xl')}>
+                        <div ref={stickyElement} className={'sticky top-0 my-16 bg-gray-100 rounded  text-gray-500 flex items-center p-4 justify-between lg:px-6 z-[60] ' + (dashTextOpacity === 0 && 'shadow-2xl')}>
                             <h1 className={`text-md font-semi  flex items-center  duration-300 ` + (dashTextOpacity === 0 ? 'opacity-0 ' : 'opacity-100 ')}>
                                 Dashboard
                                 <MdAccountBalance className='ml-2' />

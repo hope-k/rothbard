@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom'
 import NumberFormat from 'react-number-format'
 import instance from '../../axios'
 import {motion} from 'framer-motion'
-
+import {RotatingLines} from 'react-loader-spinner'
 
 const RegisterPage = () => {
     const { error, loading, isAuthenticated, user, token } = useSelector(state => state.auth)
@@ -27,6 +27,7 @@ const RegisterPage = () => {
     const [lastName, setLastName] = useState('');
     const dispatch = useDispatch();
     const [passwordVisible, setPasswordVisible] = useState(false);
+
 
     const togglePasswordVisible = () => {
         setPasswordVisible(!passwordVisible);
@@ -64,7 +65,8 @@ const RegisterPage = () => {
                 dateOfBirth,
                 ssn,
                 address,
-                email
+                email,
+                image
             }, {
                 headers: {
                     'Authorization': `Bearer ${token && token}`
@@ -133,7 +135,7 @@ const RegisterPage = () => {
 
                             />
                             <label className=' flex duration-200 transition-all ease-in-out absolute top-[-1.5rem] peer-focus:top-[-1.5rem] peer-focus:text-sm peer-focus:text-[#161d3f] peer-focus:font-semibold  peer-placeholder-shown:top-[0] peer-placeholder-shown:text-base text-sm pointer-events-none text-gray-500'>
-                                <FingerPrintIcon className='w-6 mr-2 flex' />
+                                <FingerPrintIcon className='w-4 mr-2 flex' />
                                 User ID
                             </label>
 
@@ -151,7 +153,7 @@ const RegisterPage = () => {
                                 {passwordVisible ? <EyeOffIcon /> : <EyeIcon />}
                             </div>
                             <label className='flex lg:flex duration-200 transition-all ease-in-out absolute top-[-1.5rem] peer-focus:top-[-1.5rem] peer-focus:text-sm peer-focus:text-[#161d3f] peer-focus:font-semibold  peer-placeholder-shown:top-[0] peer-placeholder-shown:text-base text-sm pointer-events-none text-gray-500'>
-                                <LockClosedIcon className='w-6 mr-2 flex' />
+                                <LockClosedIcon className='w-4 mr-2 flex' />
                                 Password
                             </label>
 
@@ -296,13 +298,25 @@ const RegisterPage = () => {
                                             transition={{ duration: 0.3 }}
                                             src={image}
                                             alt='profile'
-                                            className="w-24 h-24 rounded-full border-teal-500 bg-gray-200 hover:bg-gray-300 p-[0.1rem] flex items-center justify-center border hover:border-gray-400 duration-500 object-fill object-center " />
+                                            className="w-24 h-24 rounded-full border-teal-500 bg-gray-200 hover:bg-gray-300 p-[0.1rem] flex items-center justify-center border hover:border-gray-400 duration-500 object-cover " />
                                     </motion.div>
                                 )
                             }
                         </motion.div>
                         <button disabled={loading && true} type='submit' className='bg-[#1c2c5e] text-[white] p-3 rounded-lg mb-4 disabled:bg-[#1c2d5e8e]'>
-                            Request An Account
+                            {
+                                loading ?
+                                    <div>
+                                        <RotatingLines
+                                            strokeColor="white"
+                                            strokeWidth="1.5"
+                                            animationDuration="0.75"
+                                            width="30"
+                                            visible={true} />
+
+                                    </div> :
+                                    <h4>Request An Account</h4>
+                            }
                         </button>
 
                     </form>

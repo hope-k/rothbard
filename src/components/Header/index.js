@@ -5,6 +5,7 @@ import { LocationMarkerIcon } from '@heroicons/react/solid'
 import { useDispatch, useSelector } from 'react-redux'
 import { ChevronDownIcon } from '@heroicons/react/outline'
 import { logout } from '../../redux/Slices/authSlice'
+import {motion} from 'framer-motion'
 
 const Header = () => {
   
@@ -112,13 +113,21 @@ const Header = () => {
                             isAuthenticated &&
                             <div className='ml-2 flex' >
                                 {
-                                    user?.image ? (
-                                        <img onClick={() => toggleProfileOpen()} src={user?.image} alt='profile' className='w-10 h-10' />
+                                    user?.image?.url ? (
+                                            <motion.div  className="flex items-center justify-center py-5  rounded-full">
+                                                <motion.img
+                                                    initial={{ x: 20, opacity: 0.1 }}
+                                                    whileInView={{ x: 0, opacity: 1 }}
+                                                    transition={{ duration: 0.3 }}
+                                                
+                                                    src={user?.image?.url}
+                                                    alt='profile'
+                                                    className="w-[3.2rem] h-[3.2rem] rounded-full border-teal-500 bg-gray-200 hover:bg-gray-300  flex items-center justify-center border-[1.4px] hover:border-gray-400 duration-500 object-cover " />
+                                            </motion.div>
                                     ) : null
                                 }
                                 <ChevronDownIcon onClick={() => toggleProfileOpen()} className='w-4 ml-1 text-white' />
                             </div>
-
                         }
                     </div>
 

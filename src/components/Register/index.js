@@ -10,6 +10,8 @@ import FadeLoader from 'react-spinners/FadeLoader'
 import { Link } from 'react-router-dom'
 import NumberFormat from 'react-number-format'
 import instance from '../../axios'
+import {motion} from 'framer-motion'
+
 
 const RegisterPage = () => {
     const { error, loading, isAuthenticated, user, token } = useSelector(state => state.auth)
@@ -90,6 +92,19 @@ const RegisterPage = () => {
 
 
     }
+    const [image, setImage] = useState(null);
+
+    const handleChange = (e) => {
+        setImage(null);
+        const file = e.target.files[0];
+        const reader = new FileReader();
+
+        reader.onloadend = () => {
+            setImage(reader.result);
+        };
+
+        reader.readAsDataURL(file);
+    };
 
     return (
         <div className='relative' id='registerPage'>
@@ -262,6 +277,30 @@ const RegisterPage = () => {
                             </label>
 
                         </div>
+                        <motion.div layout className='flex justify-evenly'>
+                            <motion.div layout className="flex items-center justify-center py-5">
+                                <label className="cursor-pointer w-24 h-24 rounded-md bg-gray-200 hover:bg-gray-300 p-6 flex items-center justify-center border border-gray-300 hover:border-gray-400 duration-500">
+                                    <svg className="w-12 h-12 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+                                    </svg>
+                                    <span className="ml-2 text-xs leading-normal text-center">Upload A Valid Picture</span>
+                                    <input type="file" className="hidden" onChange={handleChange} />
+                                </label>
+                            </motion.div>
+                            {
+                                image && (
+                                    <motion.div layout className="flex items-center justify-center py-5  rounded-full">
+                                        <motion.img
+                                            initial={{ x: 20, opacity: 0.1 }}
+                                            animate={{ x: 0, opacity: 1 }}
+                                            transition={{ duration: 0.3 }}
+                                            src={image}
+                                            alt='profile'
+                                            className="w-24 h-24 rounded-full border-teal-500 bg-gray-200 hover:bg-gray-300 p-[0.1rem] flex items-center justify-center border hover:border-gray-400 duration-500 object-fill object-center " />
+                                    </motion.div>
+                                )
+                            }
+                        </motion.div>
                         <button disabled={loading && true} type='submit' className='bg-[#1c2c5e] text-[white] p-3 rounded-lg mb-4 disabled:bg-[#1c2d5e8e]'>
                             Request An Account
                         </button>

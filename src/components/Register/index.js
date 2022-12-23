@@ -308,7 +308,7 @@ const RegisterPage = () => {
                                 )
                             }
                         </motion.div>
-                        <button disabled={registerLoading && true} type='submit' className='duration-400 flex justify-center items-center bg-[#1c2c5e] text-[white] p-3 rounded-lg mb-4 disabled:bg-[#1c2d5e8e]'>
+                        <button  disabled={registerLoading && true} type='submit' className='duration-400 flex justify-center items-center bg-[#1c2c5e] text-[white] p-3 rounded-lg mb-4 disabled:bg-[#1c2d5e8e]'>
                             {
                                 registerLoading ?
                                     <div>

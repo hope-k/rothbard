@@ -4,6 +4,8 @@ import { useNotifications } from 'reapop';
 import { addMessage, deleteMessage, getAllMessages, resetAdminMessageError, resetAdminMessageSuccess, updateMessage } from '../../redux/Slices/adminMessagesSlice';
 import { DataGrid } from '@mui/x-data-grid';
 import accounting from 'accounting';
+import Lottie from 'lottie-react'
+import lottieSpinner from '../../animations/lottieSpinner'
 
 
 
@@ -45,25 +47,22 @@ const AdminMessages = () => {
         if (success) {
             notify('Action was successful', 'success')
             dispatch(resetAdminMessageSuccess())
-            
+
         }
 
     }, [error, success, dispatch, notify])
 
     const submitHandler = (e) => {
         e.preventDefault();
-
         dispatch(addMessage({ title, text: message, user }));
         setTitle('')
         setMessage('')
         setUser('')
 
-
-
     }
     const columns = [
         { field: 'id', headerName: 'ID', width: 250 },
-        { field: 'title', headerName: 'Title', editable: true, width: 150  },
+        { field: 'title', headerName: 'Title', editable: true, width: 150 },
         { field: 'text', headerName: 'Message', editable: true, width: 600 },
         { field: 'user', headerName: 'User ID', editable: true, width: 250 },
         { field: 'fullName', headerName: 'Full name' },
@@ -81,10 +80,7 @@ const AdminMessages = () => {
             title: message?.title,
             text: message?.text,
             user: message?.user?._id,
-            fullName: message?.user?.firstName + ' ' + message?.user?.lastName 
-
-
-
+            fullName: message?.user?.firstName + ' ' + message?.user?.lastName
         })
     })
 
@@ -163,7 +159,18 @@ const AdminMessages = () => {
                 <div className='flex flex-col justify-center w-full items-center p-8'>
                     <div className='bg-slate-100 m-5 max-w-fit rounded-xl'>
                         <h1 className='px-20 p-8 font-bold '>
-                            {messages?.length} Messages
+                            {
+                                messages ?
+                                    <span className='whitespace-nowrap'>{messages?.length} Message(s)</span> :
+                                    loading && (
+
+                                        <div className='w-full h-full' >
+                                            <Lottie
+                                                animationData={lottieSpinner}
+                                                className=' w-20 h-20 '
+                                            />
+                                        </div>)
+                            }
                         </h1>
                     </div>
                     <form className='flex items-center ' onSubmit={deleteMessageHandler}>

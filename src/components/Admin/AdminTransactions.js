@@ -5,10 +5,12 @@ import { DataGrid } from '@mui/x-data-grid';
 import { Link, useNavigate } from 'react-router-dom';
 import { useNotifications } from 'reapop';
 import moment from 'moment'
+import Lottie from 'lottie-react';
+import lottieSpinner from '../../animations/lottieSpinner.json'
 
 const AdminTransactions = () => {
     const navigate = useNavigate()
-    const { success, error, transactions } = useSelector(state => state.adminTransactions)
+    const { success, error, transactions, loading } = useSelector(state => state.adminTransactions)
     const { notify } = useNotifications()
     const [editField, setEditField] = useState('');
     const [editID, setEditID] = useState('')
@@ -90,8 +92,19 @@ const AdminTransactions = () => {
     return (
         <div className='flex flex-col justify-center w-full items-center p-8'>
             <div className='bg-slate-100 m-5 max-w-fit rounded-xl'>
-                <h1 className='px-20 p-8 font-bold '>
-                    {transactions?.length} Transactions
+                <h1 className='px-20 p-8 font-bold flex items-center justify-center'>
+                    {
+                        transactions ?
+                            <span className='whitespace-nowrap'>{transactions?.length} Transaction(s)</span> :
+                            loading && (
+
+                                <div className='w-full h-full' >
+                                    <Lottie
+                                        animationData={lottieSpinner}
+                                        className=' w-20 h-20 '
+                                    />
+                                </div>)
+                    }
                 </h1>
             </div>
             <form className='flex items-center ' onSubmit={deleteTransactionHandler}>
@@ -109,7 +122,7 @@ const AdminTransactions = () => {
 
                 </div>
                 <button type='submit' className='text-sm bg-red-400 h-fit w-fit p-1 font-semibold rounded-lg'>
-                    DELETE TRANSACTION
+                    DELETE
                 </button>
             </form>
             <div className='h-[30rem] w-full px-4 flex justify-center items-center bg-slate-50  rounded-3xl '>

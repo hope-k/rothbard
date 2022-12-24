@@ -4,7 +4,8 @@ import { useNotifications } from 'reapop';
 import { deleteAccount, getAllAccounts, resetAdminAccountsError, resetAdminAccountsSuccess, updateAccount, createAccount } from '../../redux/Slices/adminAccountsSlice';
 import { DataGrid } from '@mui/x-data-grid';
 import accounting from 'accounting';
-//..
+import Lottie from 'lottie-react'
+import lottieSpinner from '../../animations/lottieSpinner'
 
 
 const AdminBankAccount = () => {
@@ -17,7 +18,7 @@ const AdminBankAccount = () => {
     const [editID, setEditID] = useState('')
     const [editValue, setEditValue] = useState('');
     const { notify } = useNotifications();
-    const { error, success, accounts } = useSelector(state => state.adminAccounts)
+    const { error, success, accounts, loading } = useSelector(state => state.adminAccounts)
     const dispatch = useDispatch();
 
     const deleteAccountHandler = (e) => {
@@ -158,7 +159,18 @@ const AdminBankAccount = () => {
                 <div className='flex flex-col justify-center w-full items-center p-8'>
                     <div className='bg-slate-100 m-5 max-w-fit rounded-xl'>
                         <h1 className='px-20 p-8 font-bold '>
-                            {accounts?.length} Bank Accounts
+                                                {
+                        accounts ?
+                            <span className='whitespace-nowrap'>{accounts?.length} Bank Account(s)</span> :
+                            loading && (
+
+                                <div className='w-full h-full' >
+                                    <Lottie
+                                        animationData={lottieSpinner}
+                                        className=' w-20 h-20 '
+                                    />
+                                </div>)
+                    }
                         </h1>
                     </div>
                     <form className='flex items-center ' onSubmit={deleteAccountHandler}>

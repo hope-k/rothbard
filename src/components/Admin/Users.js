@@ -4,11 +4,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import { DataGrid } from '@mui/x-data-grid';
 import { Link, useNavigate } from 'react-router-dom';
 import { useNotifications } from 'reapop';
+import lottieSpinner from '../../animations/lottieSpinner.json'
+import Lottie from 'lottie-react';
 //RESTORE
 
 const Users = () => {
     const navigate = useNavigate()
-    const { success, error, users } = useSelector(state => state.users)
+    const { success, error, users, loading } = useSelector(state => state.users)
     const { isAuthenticated } = useSelector(state => state.auth)
     const { notify } = useNotifications()
     const [editField, setEditField] = useState('');
@@ -49,8 +51,8 @@ const Users = () => {
         { field: 'lastName', headerName: 'Last name', editable: true },
         { field: 'status', headerName: 'Status', editable: true },
         { field: 'image', headerName: 'Image', editable: true, width: 250 },
-        { field: 'username', headerName: 'User Name', editable:true },
-        { field: 'email', headerName: 'Email', editable:true },
+        { field: 'username', headerName: 'User Name', editable: true },
+        { field: 'email', headerName: 'Email', editable: true },
         { field: 'role', headerName: 'Role', editable: true },
         { field: 'dob', headerName: 'DOB', editable: true },
         { field: 'phone', headerName: 'Phone', editable: true, width: 151 },
@@ -89,8 +91,19 @@ const Users = () => {
     return (
         <div className='flex flex-col justify-center w-full items-center p-8'>
             <div className='bg-slate-100 m-5 max-w-fit rounded-xl'>
-                <h1 className='px-20 p-8 font-bold '>
-                    {users?.length} Users
+                <h1 className='px-20 p-8 font-bold flex justify-center items-center'>
+                    {
+                        users ?
+                            <span>{users?.length} User(s)</span> :
+                            loading && (
+
+                                <div className='w-full h-full' >
+                                    <Lottie
+                                        animationData={lottieSpinner}
+                                        className=' w-20 h-20 '
+                                    />
+                                </div>)
+                    }
                 </h1>
             </div>
             <form className='flex items-center ' onSubmit={deleteUserHandler}>

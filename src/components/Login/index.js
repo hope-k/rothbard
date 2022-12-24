@@ -115,7 +115,8 @@ const LoginPage = () => {
                                         strokeWidth="1.5"
                                         animationDuration="0.75"
                                         width="30"
-                                        visible={true} />
+                                        
+                                        />
                                 
                                 </div> :
                                     <h4>Sign On</h4>

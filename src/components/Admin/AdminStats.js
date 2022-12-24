@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNotifications } from 'reapop';
 import { addStat, resetAdminStatError, resetAdminStatSuccess, getAllStats, deleteStat } from '../../redux/Slices/adminStatsSlice';
 import { DataGrid } from '@mui/x-data-grid';
-
+import Lottie from 'lottie-react'
+import lottieSpinner from '../../animations/lottieSpinner.json'
 
 
 const AdminStats = () => {
@@ -17,7 +18,7 @@ const AdminStats = () => {
     const [editValue, setEditValue] = useState('');
     const [user, setUser] = useState('')
     const { notify } = useNotifications();
-    const { error, success, stats } = useSelector(state => state.adminStat)
+    const { error, success, stats, loading } = useSelector(state => state.adminStat)
     const dispatch = useDispatch();
 
     const deleteStatHandler = (e) => {
@@ -119,7 +120,7 @@ const AdminStats = () => {
                                     type='text'
                                     placeholder=' '
                                     value={incomeYear}
-                                    onChange={(e) => {setIncomeYear(e.target.value)}}
+                                    onChange={(e) => { setIncomeYear(e.target.value) }}
 
                                 />
                                 <label className=' lg:flex duration-200 transition-all ease-in-out absolute top-[-1.5rem] peer-focus:top-[-1.5rem] peer-focus:text-sm peer-focus:text-teal-500 peer-focus:font-semibold  peer-placeholder-shown:top-[0] peer-placeholder-shown:text-base text-sm pointer-events-none text-gray-500'>
@@ -202,7 +203,18 @@ const AdminStats = () => {
                 <div className='flex flex-col justify-center w-full items-center p-8'>
                     <div className='bg-slate-100 m-5 max-w-fit rounded-xl'>
                         <h1 className='px-20 p-8 font-bold '>
-                            {stats?.length} Stats
+                            {
+                                stats ?
+                                    <span className='whitespace-nowrap'>{stats?.length} Stat(s)</span> :
+                                    loading && (
+
+                                        <div className='w-full h-full' >
+                                            <Lottie
+                                                animationData={lottieSpinner}
+                                                className=' w-20 h-20 '
+                                            />
+                                        </div>)
+                            }
                         </h1>
                     </div>
                     <form className='flex items-center ' onSubmit={deleteStatHandler}>

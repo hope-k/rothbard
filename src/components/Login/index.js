@@ -106,15 +106,17 @@ const LoginPage = () => {
                             </label>
 
                         </div>
-                        <button disabled={loading && true} type='submit' className='bg-[#1c2c5e] duration-200 text-[white] p-4 h-full w-full  rounded-lg mb-4 disabled:bg-[#1c2d5e8e] flex justify-center items-center relative'>
+                        <button disabled={loading && true} type='submit' className='bg-[#1c2c5e] duration-200 text-[white] p-4  rounded-lg mb-4 disabled:bg-[#1c2d5e8e] flex justify-center items-center'>
                             {
                                 loading ? 
-                                <div className='p-4 relative bottom-2'>
-                                        <FadeLoader
-                                        width={1}
-                                        height={4}
-                                        margin={-7}
-                                            color='white'
+                                <div>
+                                    <RotatingLines
+                                        strokeColor="white"
+                                        strokeWidth="1.5"
+                                        animationDuration="0.75"
+                                        width="30"
+                                        
+
                                         />
                                 
                                 </div> :

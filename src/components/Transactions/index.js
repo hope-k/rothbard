@@ -7,6 +7,10 @@ import { getMyTransactions } from '../../redux/Slices/transactionsSlice'
 import moment from 'moment'
 import ClockLoader from 'react-spinners/ClockLoader'
 import accounting from 'accounting'
+import ReactPaginate from 'react-paginate';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { FaEllipsisH } from 'react-icons/fa';
+
 
 
 const Transactions = () => {
@@ -15,6 +19,11 @@ const Transactions = () => {
     useEffect(() => {
         dispatch(getMyTransactions())
     }, [dispatch]);
+    const handlePageClick = (event) => {
+        console.log(
+            `User requested page number ${event.selected}`
+        );
+    };
 
     const {transactions, loading} = useSelector(state => state.transactions)
     return (
@@ -59,9 +68,24 @@ const Transactions = () => {
                                             }
                                         </h1>
                                     </div>
+                                 
                                 </div>
                             ))
                         }
+                        <ReactPaginate
+                            breakLabel="..."
+                            nextLabel= {<div className='flex items-center justify-center px-2 py-1'>  <FaChevronRight /> </div>}
+                            previousLabel={<div className='flex items-center justify-center px-2 py-1'>  <FaChevronLeft /> </div>}
+                            onPageChange={handlePageClick}
+                            pageRangeDisplayed={1}
+                            pageCount={55}
+                            renderOnZeroPageCount={null}
+                            containerClassName={" flex items-center justify-center w-full "}
+                            activeClassName={"duration-300 ease-out  bg-teal-600 text-white rounded-full px-2 py-1 flex items-center justify-center border-white border"}
+                            pageLinkClassName={"px-2 py-1 rounded-full"}
+                            nextClassName={"rounded-full mx-2 border-teal-500 border  flex items-center justify-center"}
+                            previousClassName={"rounded-full mx-2 border-teal-500 border  flex items-center justify-center"}
+                        />
 
 
 

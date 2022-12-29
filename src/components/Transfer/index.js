@@ -19,8 +19,10 @@ const Transfer = () => {
     useEffect(() => {
 
 
-        if (error) {
-            notify(error, { title: 'An error occurred while trying to process your transaction', status: 'error', id: 'transfer'  })
+        if (error?.length) {
+            error?.forEach(err => {
+                notify(err, { title: 'An error occurred while trying to process your transaction', status: 'error', id: 'transfer' })
+            })
             dispatch(resetTransferError())
         }
         if (success) {

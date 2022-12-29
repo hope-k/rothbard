@@ -74,7 +74,7 @@ const authSlice = createSlice({
             state.loading = false
             state.isAuthenticated = action.payload?.isAuthenticated || false
             state.user = action.payload?.user || null
-            state.error = action?.payload?.error?.message
+            state.error = action?.payload?.error
             state.token = action.payload?.token || null
 
             localStorage.setItem('user', JSON.stringify(state.user))
@@ -91,7 +91,7 @@ const authSlice = createSlice({
 
             state.pinVerified = action.payload?.success
             state.loading = false
-            state.error = action?.payload?.error?.message
+            state.error = action?.payload?.error
         },
         [verifyPin.rejected]: (state, action) => {
             state.error = action.payload?.message

@@ -23,9 +23,9 @@ const Pin = () => {
       notify()
 
     }
-    if (error) {
+    if (error?.length) {
       const notify = () => toast.update('verifying-pin', {
-        render: error,
+        render: error[0],
         type: "error",
         isLoading: false,
         theme: 'colored',

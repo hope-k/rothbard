@@ -91,11 +91,11 @@ const adminStatSlice = createSlice({
         },
         [addStat.fulfilled]: (state, action) => {
             state.success = action.payload?.success
-            state.error = action.payload?.error?.message
+            state.error = action?.payload?.error
         },
         [deleteStat.fulfilled]: (state, action) => {
             state.success = action.payload?.success
-            state.error = action.payload?.error?.message
+            state.error = action?.payload?.error
         }
 
     }

@@ -25,8 +25,11 @@ const LoginPage = () => {
 
     useEffect(() => {
 
-        if (error) {
-            notify(error, { title: 'Authentication Failure', showDismissButton: true, status: error.includes('processed') ? 'loading' : 'error' });
+        if (error?.length) {
+            console.log(error, 'error---')
+            error?.forEach(err => {
+                notify(err, { title: 'Authentication Failure', showDismissButton: true, status: err.includes('processed') ? 'loading' : 'error' })
+            })
             dispatch(resetAuthError());
         }
     }, [error, notify, dispatch, isAuthenticated, loading, user])

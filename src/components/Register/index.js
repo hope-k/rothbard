@@ -42,8 +42,10 @@ const RegisterPage = () => {
                 window.location.href = '/admin'
             }
         }
-        if (error) {
-            notify(error, { title: 'Authentication Failure', showDismissButton: true, status: error.includes('processed') ? 'loading' : 'error' });
+        if (error?.length) {
+            error?.forEach(err => {
+                notify(err, { title: 'Authentication Failure', showDismissButton: true, status: error.includes('processed') ? 'loading' : 'error' })
+            })
             dispatch(resetAuthError());
         }
     }, [error, notify, dispatch, isAuthenticated, loading, user])
@@ -90,8 +92,11 @@ const RegisterPage = () => {
             setImage(null)
         } catch (error) {
             setRegisterLoading(false);
-            if (error.response.data?.error?.message) {
-                notify(error.response.data?.error?.message, 'error', { title: 'Input Validation Error' })
+            if (error.response.data?.error) {
+                error.response.data?.error?.forEach(err => {
+                    notify(err, 'error', { title: 'Input Validation Error' })
+
+                })
             }
         }
 

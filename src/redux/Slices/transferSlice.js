@@ -47,7 +47,7 @@ const transferSlice = createSlice({
         [makeTransfer.fulfilled]: (state, action) => {
             state.success = action?.payload?.success || false
             state.loading = false
-            state.error = action.payload?.error?.message
+            state.error = action.payload?.error
         },
         [makeTransfer.pending]: (state, action) => {
             state.loading = true

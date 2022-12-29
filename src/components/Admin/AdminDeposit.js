@@ -24,8 +24,11 @@ const AdminDeposit = () => {
         if (loading) {
             notify('Processing Transaction...', 'loading', { dismissible: false })
         }
-        if (error) {
-            notify(error, { title: 'Transaction Error', status: 'error' })
+        if (error?.length) {
+            error?.forEach(err => {
+                notify(err, { title: 'Transaction Error', status: 'error' })
+
+            })
             dispatch(resetAdminTransactionsError())
         }
         if (success) {

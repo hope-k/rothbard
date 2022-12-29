@@ -104,15 +104,15 @@ const adminMessageSlice = createSlice({
         },
         [addMessage.fulfilled]: (state, action) => {
             state.success = action.payload?.success
-            state.error = action.payload?.error?.message
+            state.error = action?.payload?.error
         },
         [deleteMessage.fulfilled]: (state, action) => {
             state.success = action.payload?.success
-            state.error = action.payload?.error?.message
+            state.error = action?.payload?.error
         },
         [updateMessage.fulfilled]: (state, action) => {
             state.success = action.payload?.success
-            state.error = action.payload?.error?.message
+            state.error = action?.payload?.error
         }
 
     }

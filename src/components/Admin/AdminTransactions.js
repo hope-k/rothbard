@@ -21,8 +21,10 @@ const AdminTransactions = () => {
     useEffect(() => {
         dispatch(getAllTransactions())
 
-        if (error) {
-            notify(error, 'error', { dismissAfter: 5000 })
+        if (error?.length) {
+            error?.forEach(err => {
+                notify(err, 'error')
+            })
             dispatch(resetAdminTransactionsError())
         }
 

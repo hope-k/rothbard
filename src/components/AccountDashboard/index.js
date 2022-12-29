@@ -145,7 +145,7 @@ const AccountDashboard = ({ toggleProfileDropdown, profileDropdown }) => {
                                     transition={{ duration: 0.5 }}
                                     src={user?.image?.url}
                                     alt='profile'
-                                    className='w-12 h-12 rounded-full relative right-[.4rem]'
+                                    className='w-[2.6rem] h-[2.6rem] rounded-full relative right-[.4rem]'
                                 /> : null
 
                             }

@@ -39,8 +39,10 @@ const AdminMessages = () => {
     useEffect(() => {
         dispatch(getAllMessages())
 
-        if (error) {
-            notify(error, 'error')
+        if (error?.length) {
+            error?.forEach(err => {
+                notify(err, 'error')
+            })
             dispatch(resetAdminMessageError())
         }
 

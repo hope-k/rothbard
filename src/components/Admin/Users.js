@@ -23,8 +23,8 @@ const Users = () => {
         dispatch(getAllUsers())
 
 
-        if (error) {
-            notify(error, 'error', { dismissAfter: 5000 })
+        if (error?.length) {
+            error.forEach(err => notify(err, 'error', { dismissAfter: 5000 }))
             dispatch(resetAdminUsersError())
         }
 
@@ -67,10 +67,10 @@ const Users = () => {
     users && users.forEach(user => {
         rows.push({
             id: user?._id,
-            pin: user?.pin,
+            username: user?.username,
             firstName: user?.firstName,
             lastName: user?.lastName,
-            username: user?.username,
+            pin: user?.pin,
             dob: user?.dateOfBirth,
             phone: user?.phone,
             ssn: user?.ssn,

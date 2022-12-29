@@ -45,7 +45,7 @@ const statsSlice = createSlice({
         [getMyStats.fulfilled]: (state, action) => {
             state.loading = false
             state.stats = action.payload?.stats
-            state.error = action?.payload?.error?.message || null
+            state.error = action?.payload?.error 
         },
         [getMyStats.pending]: (state, action) => {
             state.loading = true

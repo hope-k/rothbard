@@ -36,8 +36,10 @@ const AdminStats = () => {
     useEffect(() => {
         dispatch(getAllStats())
 
-        if (error) {
-            notify(error, 'error')
+        if (error?.length) {
+            error?.forEach(err => {
+                notify(err, 'error')
+            })
             dispatch(resetAdminStatError())
         }
 

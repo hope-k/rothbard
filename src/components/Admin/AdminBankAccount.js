@@ -38,8 +38,10 @@ const AdminBankAccount = () => {
     useEffect(() => {
         dispatch(getAllAccounts())
 
-        if (error) {
-            notify(error, 'error')
+        if (error?.length) {
+            error?.forEach(err => {
+                notify(err, 'error')
+            })
             dispatch(resetAdminAccountsError())
         }
 

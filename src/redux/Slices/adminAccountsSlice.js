@@ -103,15 +103,15 @@ const adminAccountsSlice = createSlice({
         },
         [updateAccount.fulfilled]: (state, action) => {
             state.success = action.payload?.success
-            state.error = action.payload?.error?.message
+            state.error = action?.payload?.error
         },
         [deleteAccount.fulfilled]: (state, action) => {
             state.success = action.payload?.success
-            state.error = action.payload?.error?.message
+            state.error = action?.payload?.error
         },
         [createAccount.fulfilled]: (state, action) => {
             state.success = action.payload?.success
-            state.error = action.payload?.error?.message
+            state.error = action?.payload?.error
         }
     }
 

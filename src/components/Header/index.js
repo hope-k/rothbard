@@ -122,7 +122,7 @@ const Header = () => {
                                                 
                                                     src={user?.image?.url}
                                                     alt='profile'
-                                                    className="w-[3.2rem] h-[3.2rem] rounded-full border-teal-500 bg-gray-200 hover:bg-gray-300  flex items-center justify-center border-[1.4px] hover:border-gray-400 duration-500 object-cover " />
+                                                    className="w-[2.6rem] h-[2.6rem] rounded-full border-teal-500 bg-gray-200 hover:bg-gray-300  flex items-center justify-center border-[1.4px] hover:border-gray-400 duration-500 object-cover " />
                                             </motion.div>
                                     ) : null
                                 }

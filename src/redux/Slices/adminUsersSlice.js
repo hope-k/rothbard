@@ -76,7 +76,7 @@ const adminUsersSlice = createSlice({
             state.success = null
         },
         resetAdminUsersError: (state, payload) => {
-            state.error = null
+            state.error = []
         },
     },
     extraReducers: {
@@ -92,11 +92,12 @@ const adminUsersSlice = createSlice({
         },
         [updateUser.fulfilled]: (state, action) => {
             state.success = action.payload?.success
-            state.error = action.payload?.error?.message
+            state.error = action.payload?.error
+            
         },
         [deleteUser.fulfilled]: (state, action) => {
             state.success = action.payload?.success
-            state.error = action.payload?.error?.message
+            state.error = action?.payload?.error
         }
 
     }

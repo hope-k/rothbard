@@ -44,7 +44,7 @@ const messgaesSlice = createSlice({
         [getMyMessages.fulfilled]: (state, action) => {
             state.loading = false
             state.messages = action.payload?.messages
-            state.error = action?.payload?.error?.message || null
+            state.error = action?.payload?.error
         },
         [getMyMessages.pending]: (state, action) => {
             state.loading = true

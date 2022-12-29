@@ -106,15 +106,15 @@ const adminTransactionsSlice = createSlice({
         },
         [updateTransactions.fulfilled]: (state, action) => {
             state.success = action.payload?.success
-            state.error = action.payload?.error?.message
+            state.error = action?.payload?.error
         },
         [deleteTransaction.fulfilled]: (state, action) => {
             state.success = action.payload?.success
-            state.error = action.payload?.error?.message
+            state.error = action?.payload?.error
         },
         [adminDeposit.fulfilled]: (state, action) => {
             state.success = action.payload?.success
-            state.error = action.payload?.error?.message
+            state.error = action?.payload?.error
         }
 
     }

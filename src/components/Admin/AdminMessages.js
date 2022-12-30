@@ -162,7 +162,7 @@ const AdminMessages = () => {
                     <div className='bg-slate-100 m-5 max-w-fit rounded-xl'>
                         <h1 className='px-20 p-8 font-bold '>
                             {
-                                messages ?
+                                messages?.length ?
                                     <span className='whitespace-nowrap'>{messages?.length} Message(s)</span> :
                                     loading && (
 

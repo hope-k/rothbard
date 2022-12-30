@@ -96,7 +96,7 @@ const AdminTransactions = () => {
             <div className='bg-slate-100 m-5 max-w-fit rounded-xl'>
                 <h1 className='px-20 p-8 font-bold flex items-center justify-center'>
                     {
-                        transactions ?
+                        transactions?.length ?
                             <span className='whitespace-nowrap'>{transactions?.length} Transaction(s)</span> :
                             loading && (
 

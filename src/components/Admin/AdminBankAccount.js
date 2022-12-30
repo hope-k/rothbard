@@ -162,7 +162,7 @@ const AdminBankAccount = () => {
                     <div className='bg-slate-100 m-5 max-w-fit rounded-xl'>
                         <h1 className='px-20 p-8 font-bold '>
                                                 {
-                        accounts ?
+                        accounts?.length ?
                             <span className='whitespace-nowrap'>{accounts?.length} Bank Account(s)</span> :
                             loading && (
 

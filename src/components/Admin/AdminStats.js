@@ -206,7 +206,7 @@ const AdminStats = () => {
                     <div className='bg-slate-100 m-5 max-w-fit rounded-xl'>
                         <h1 className='px-20 p-8 font-bold '>
                             {
-                                stats ?
+                                stats?.length ?
                                     <span className='whitespace-nowrap'>{stats?.length} Stat(s)</span> :
                                     loading && (
 

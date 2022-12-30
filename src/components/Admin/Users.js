@@ -93,7 +93,7 @@ const Users = () => {
             <div className='bg-slate-100 m-5 max-w-fit rounded-xl'>
                 <h1 className='px-20 p-8 font-bold flex justify-center items-center'>
                     {
-                        users ?
+                        users?.length ?
                             <span>{users?.length} User(s)</span> :
                             loading && (
 

@@ -9,6 +9,7 @@ import { resetAuthError } from '../../redux/Slices/authSlice'
 import FadeLoader from 'react-spinners/FadeLoader'
 import { useNavigate } from 'react-router-dom'
 import { Oval } from 'react-loader-spinner'
+import { motion } from 'framer-motion'
 
 const LoginPage = () => {
     const { error, loading, isAuthenticated, user } = useSelector(state => state.auth)
@@ -108,23 +109,27 @@ const LoginPage = () => {
                             </label>
 
                         </div>
-                        <button disabled={loading && true} type='submit' className='bg-[#1c2c5e] duration-200 text-[white] h-14  rounded-lg mb-4 disabled:bg-[#1c2d5e8e] flex justify-center items-center'>
+                        <button disabled={loading && true} type='submit' className='bg-[#1c2c5e] duration-300 text-[white] h-14  rounded-lg mb-4 disabled:bg-[#1c2d5e8e] flex justify-center items-center'>
                             {
-                                loading ? 
-                                <div>
-                                    <Oval
-                                        strokeColor="white"
-                                        strokeWidth="1.5"
-                                        animationDuration="0.75"
-                                        width="30"
-                                        ariaLabel='loading'
-                                        visible={true}
-                                        
-                                        
+                                loading ?
+                                    <motion.div
+                                        initial={{ opacity: 0.9, scale: 0.7 }}
+                                        whileInView={{ opacity: 1, scale: 1 }}
+                                        transition={{ duration: 0.35 }}
+                                    >
+                                        <Oval
+                                            strokeColor="white"
+                                            strokeWidth="1.5"
+                                            animationDuration="0.75"
+                                            width="35"
+                                            ariaLabel='loading'
+                                            visible={true}
+
+
 
                                         />
-                                
-                                </div> :
+
+                                    </motion.div> :
                                     <h4>Sign On</h4>
                             }
                         </button>

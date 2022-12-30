@@ -43,15 +43,15 @@ const Transactions = () => {
                 Transactions <GiChecklist className='ml-2 text-2xl text-white' />
             </h1>
             <div className='h-full pt-[20rem] lg:px-[16rem] md:px-[4rem] container px-4 z-50 relative'>
-                <div className='bg-gray-100 w-full row rounded-xl h-full pt-3 shadow-2xl'>
-                    <div className='p-4 lg:p-6'>
+                <div className='bg-gray-100 w-full row rounded-xl h-full pt-3 shadow-2xl relative'>
+                    <div className='p-4 lg:p-6 relative'>
                         <div className='flex justify-between mb-6 items-center'>
                             <h1 className='font-semibold'>Transactions</h1>
                             <SearchIcon className='w-6' />
                         </div>
 
                         {
-                            !loading && !transactions?.length ? (
+                            loading ? <div className='h-36 w-full items-center justify-center flex  '><span className="loader"></span></div>  : !transactions?.length ? (
                                 <div className="px-2 flex items-center justify-center p-4 h-full">
                                     <div className=' bg-gray-200 p-4 rounded-3xl'>
                                         No Transactions
@@ -94,7 +94,7 @@ const Transactions = () => {
                                     pageCount={totalPages}
                                     renderOnZeroPageCount={null}
                                     containerClassName={" flex items-center justify-center w-full "}
-                                    activeClassName={"duration-300 ease-out  bg-teal-600 text-white rounded-full px-2 py-1 flex items-center justify-center border-white border"}
+                                    activeClassName={"duration-300 ease-out mx-2  bg-teal-600 text-white rounded-full px-2 py-1 flex items-center justify-center border-white border"}
                                     pageLinkClassName={"px-2 py-1 rounded-full"}
                                     nextClassName={"rounded-full mx-2 border-teal-500 border  flex items-center justify-center"}
                                     previousClassName={"rounded-full mx-2 border-teal-500 border  flex items-center justify-center"}

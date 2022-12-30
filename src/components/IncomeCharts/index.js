@@ -33,13 +33,14 @@ const IncomeCharts = ({ stats }) => {
             {
                 label: 'Checking Income',
                 fill: false,
-                lineTension: 0.2,
+                lineTension: 0,
                 backgroundColor: '#FF8C00',
                 borderColor: '#FF8C00',
-                borderWidth: 4,
+                borderWidth: 1,
                 hoverBorderColor: '#83D3CC',
                 hoverBorderWidth: 2,
-                data: stats && stats.map(stat => stat?.income?.amount)
+                data: stats && stats.map(stat => stat?.income?.amount),
+                pointRadius: 1,
             }
         ]
     }

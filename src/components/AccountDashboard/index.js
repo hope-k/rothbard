@@ -58,7 +58,7 @@ const AccountDashboard = ({ toggleProfileDropdown, profileDropdown }) => {
     useEffect(() => {
         dispatch(getMyAccounts());
         dispatch(getMyStats())
-        dispatch(getMyTransactions())
+        dispatch(getMyTransactions({page: 1, limit: 4}))
         dispatch(getMyMessages())
 
 

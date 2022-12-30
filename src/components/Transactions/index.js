@@ -1,3 +1,4 @@
+import 'react-loading-skeleton/dist/skeleton.css'
 import React, { useEffect, useState } from 'react'
 import { BsArrowDownLeft, BsArrowUpRight } from 'react-icons/bs'
 import { SearchIcon } from '@heroicons/react/outline'
@@ -12,6 +13,8 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { FaEllipsisH } from 'react-icons/fa';
 import { useLocation } from 'react-router-dom';
 import { Watch } from 'react-loader-spinner'
+import Skeleton from 'react-loading-skeleton'
+import { motion } from 'framer-motion'
 
 const Transactions = () => {
     const dispatch = useDispatch();
@@ -51,49 +54,83 @@ const Transactions = () => {
                         </div>
 
                         {
-                            loading ? <div className='h-36 w-full items-center justify-center flex  '><span className="loader"></span></div> : !transactions?.length ? (
-                                <div className="px-2 flex items-center justify-center p-4 h-full">
-                                    <div className=' bg-gray-200 p-4 rounded-3xl'>
-                                        No Transactions
-                                    </div>
-                                </div>
-                            ) :
-                                transactions && transactions.map((transaction) => (
-                                    <div key={transaction?._id} className='w-full my-3 border-b border-gray-300 pb-3'>
-                                        <h1 className='font-semibold text-[.9rem] flex items-center uppercase'>{transaction?.transactionType}{transaction?.transactionType === 'transfer' ? <BsArrowUpRight className='text-red-500' /> : <BsArrowDownLeft className='text-green-600' />}</h1>
-                                        <div className='flex justify-between  leading-5'>
-                                            <div className='flex text-sm items-center'>
-                                                {
-                                                    transaction?.status === 'pending' ?
-                                                        <Watch
-                                                            height="16"
-                                                            width="16"
-                                                            radius="40"
-                                                            color="#4fa94d"
-                                                            ariaLabel="watch-loading"
-                                                            wrapperStyle={{}}
-                                                            wrapperClassName=""
-                                                            visible={true}
-
-                                                        />
-                                                        :
-                                                        <h1 className={'font-semibold text-sm capitalize ' + (transaction.status === 'failed' && 'text-red-500 border-l border-red-600 p-[0.2rem] rounded-sm ') + (transaction?.status === 'complete' && ' text-green-600  border-l border-green-600 p-[0.2rem] rounded-sm  ')}>
-                                                            {transaction?.status === 'complete' ? 'sent' : transaction?.status}
-                                                        </h1>
-                                                }
-                                                <h1 className=' text-gray-500 mx-2 text-[.8rem] font-light lg:font-normal'>{moment(transaction?.createdAt).format('LLL')}</h1>
-                                                <h1 className=' text-gray-500'>...{transaction?.accountId?.accountNumber.slice(-4)} {transaction?.accountId?.accountType}</h1>
+                            loading ?
+                            <>
+                                    <div className='h-[4rem] w-full flex justify-between'>
+                                        <div className='flex'>
+                                            <div className='block'>
+                                                <Skeleton className='rounded-full' height={10} width={100} />
+                                                <Skeleton height={10} width={100} />
                                             </div>
-                                            <h1 className={'font-semibold  whitespace-nowrap ' + (transaction?.transactionType === 'transfer' ? 'text-red-500' : 'text-[#00A389]')}>
-                                                {
-                                                    transaction?.transactionType === 'transfer' ? '-' + accounting.formatMoney(transaction?.amount) : accounting.formatMoney(transaction?.amount)
-
-                                                }
-                                            </h1>
+                                            <div className='block'>
+                                                <Skeleton height={10} width={80} />
+                                                <Skeleton height={10} width={150} />
+                                            </div>
                                         </div>
-
+                                        <div>
+                                            <Skeleton height={10} width={100} />
+                                        </div>
+                                    </div>                  
+                                    <div className='h-[4rem] w-full flex justify-between'>
+                                        <div className='flex'>
+                                            <div className='block'>
+                                                <Skeleton className='rounded-full' height={10} width={100} />
+                                                <Skeleton height={10} width={100} />
+                                            </div>
+                                            <div className='block'>
+                                                <Skeleton height={10} width={80} />
+                                                <Skeleton height={10} width={150} />
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <Skeleton height={10} width={100} />
+                                        </div>
+                                    </div>                   
+                                
+                            </>
+                             : !transactions?.length ? (
+                                    <div className="px-2 flex items-center justify-center p-4 h-full">
+                                        <div className=' bg-gray-200 p-4 rounded-3xl'>
+                                            No Transactions
+                                        </div>
                                     </div>
-                                ))
+                                ) :
+                                    transactions && transactions.map((transaction) => (
+                                        <div key={transaction?._id} className='w-full my-3 border-b border-gray-300 pb-3'>
+                                            <h1 className='font-semibold text-[.9rem] flex items-center uppercase'>{transaction?.transactionType}{transaction?.transactionType === 'transfer' ? <BsArrowUpRight className='text-red-500' /> : <BsArrowDownLeft className='text-green-600' />}</h1>
+                                            <div className='flex justify-between  leading-5'>
+                                                <div className='flex text-sm items-center'>
+                                                    {
+                                                        transaction?.status === 'pending' ?
+                                                            <Watch
+                                                                height="16"
+                                                                width="16"
+                                                                radius="40"
+                                                                color="#4fa94d"
+                                                                ariaLabel="watch-loading"
+                                                                wrapperStyle={{}}
+                                                                wrapperClassName=""
+                                                                visible={true}
+
+                                                            />
+                                                            :
+                                                            <h1 className={'font-semibold text-sm capitalize ' + (transaction.status === 'failed' && 'text-red-500 border-l border-red-600 p-[0.2rem] rounded-sm ') + (transaction?.status === 'complete' && ' text-green-600  border-l border-green-600 p-[0.2rem] rounded-sm  ')}>
+                                                                {transaction?.status === 'complete' ? 'sent' : transaction?.status}
+                                                            </h1>
+                                                    }
+                                                    <h1 className=' text-gray-500 mx-2 text-[.8rem] font-light lg:font-normal'>{moment(transaction?.createdAt).format('LLL')}</h1>
+                                                    <h1 className=' text-gray-500'>...{transaction?.accountId?.accountNumber.slice(-4)} {transaction?.accountId?.accountType}</h1>
+                                                </div>
+                                                <h1 className={'font-semibold  whitespace-nowrap ' + (transaction?.transactionType === 'transfer' ? 'text-red-500' : 'text-[#00A389]')}>
+                                                    {
+                                                        transaction?.transactionType === 'transfer' ? '-' + accounting.formatMoney(transaction?.amount) : accounting.formatMoney(transaction?.amount)
+
+                                                    }
+                                                </h1>
+                                            </div>
+
+                                        </div>
+                                    ))
                         }
                         {
                             (hasNextPage || hasPrevPage) && (

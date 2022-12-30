@@ -137,7 +137,7 @@ const RegisterPage = () => {
                     <form className='flex flex-col mx-6 pb-28' onSubmit={submitHandler}>
                         <div className='flex flex-col relative mb-10 lg:mb-8'>
                             <input
-                                className='z-[1] bg-transparent peer pb-2 border-b border-gray-800 outline-none mb-6 placeholder-transparent focus-within:border-[#161d3f] focus-within:border-b-2 '
+                                className='z-[1] rounded-none bg-transparent peer pb-2 border-b border-gray-800 outline-none mb-6 placeholder-transparent focus-within:border-[#161d3f] focus-within:border-b-2 '
                                 type='text'
                                 placeholder=' '
                                 onChange={e => setUsername(e.target.value)}
@@ -153,7 +153,7 @@ const RegisterPage = () => {
                         <div className='flex flex-col relative pb-8 lg:pb-1'>
                             <input
                                 onChange={e => setPassword(e.target.value)}
-                                className='z-[1] tracking-wider appearance-none bg-transparent peer pb-2 border-b border-gray-800 outline-none mb-6 placeholder-transparent focus-within:border-[#161d3f] focus-within:border-b-2'
+                                className='z-[1] rounded-none tracking-wider appearance-none bg-transparent peer pb-2 border-b border-gray-800 outline-none mb-6 placeholder-transparent focus-within:border-[#161d3f] focus-within:border-b-2'
                                 type={passwordVisible ? 'text' : 'password'}
                                 placeholder=' '
                                 value={password}
@@ -171,7 +171,7 @@ const RegisterPage = () => {
                         <div className='flex flex-col relative pb-8 lg:pb-1'>
                             <input
                                 onChange={e => setEmail(e.target.value)}
-                                className='z-[1] tracking-wider appearance-none bg-transparent peer pb-2 border-b border-gray-800 outline-none mb-6 placeholder-transparent focus-within:border-[#161d3f] focus-within:border-b-2'
+                                className='z-[1] rounded-none tracking-wider appearance-none bg-transparent peer pb-2 border-b border-gray-800 outline-none mb-6 placeholder-transparent focus-within:border-[#161d3f] focus-within:border-b-2'
                                 placeholder=' '
                                 value={email}
 
@@ -184,7 +184,7 @@ const RegisterPage = () => {
                         <div className='flex flex-col relative pb-8 lg:pb-1'>
                             <input
                                 onChange={e => setFirstName(e.target.value)}
-                                className='z-[1] tracking-wider appearance-none bg-transparent peer pb-2 border-b border-gray-800 outline-none mb-6 placeholder-transparent focus-within:border-[#161d3f] focus-within:border-b-2'
+                                className='z-[1] rounded-none tracking-wider appearance-none bg-transparent peer pb-2 border-b border-gray-800 outline-none mb-6 placeholder-transparent focus-within:border-[#161d3f] focus-within:border-b-2'
                                 type='text'
                                 placeholder=' '
                                 value={firstName}
@@ -198,7 +198,7 @@ const RegisterPage = () => {
                         <div className='flex flex-col relative pb-8 lg:pb-1'>
                             <input
                                 onChange={e => setLastName(e.target.value)}
-                                className='z-[1] tracking-wider appearance-none bg-transparent peer pb-2 border-b border-gray-800 outline-none mb-6 placeholder-transparent focus-within:border-[#161d3f] focus-within:border-b-2'
+                                className='z-[1] rounded-none tracking-wider appearance-none bg-transparent peer pb-2 border-b border-gray-800 outline-none mb-6 placeholder-transparent focus-within:border-[#161d3f] focus-within:border-b-2'
                                 type='text'
                                 placeholder=' '
                                 value={lastName}
@@ -219,7 +219,7 @@ const RegisterPage = () => {
                                 type='text'
                                 name='dateOfBirth'
                                 onValueChange={(value) => setDateOfBirth(value.formattedValue)}
-                                className='z-[1] tracking-wider appearance-none bg-transparent peer pb-2 border-b border-gray-800 outline-none mb-6 placeholder-transparent focus-within:border-[#161d3f] focus-within:border-b-2'
+                                className='z-[1] rounded-none tracking-wider appearance-none bg-transparent peer pb-2 border-b border-gray-800 outline-none mb-6 placeholder-transparent focus-within:border-[#161d3f] focus-within:border-b-2'
 
 
                             />
@@ -241,7 +241,7 @@ const RegisterPage = () => {
                                 type='text'
                                 name='ssn'
                                 onValueChange={(value) => setSsn(value.formattedValue)}
-                                className='z-[1] tracking-wider appearance-none bg-transparent peer pb-2 border-b border-gray-800 outline-none mb-6 placeholder-transparent focus-within:border-[#161d3f] focus-within:border-b-2'
+                                className='z-[1] rounded-none tracking-wider appearance-none bg-transparent peer pb-2 border-b border-gray-800 outline-none mb-6 placeholder-transparent focus-within:border-[#161d3f] focus-within:border-b-2'
 
 
                             />
@@ -254,7 +254,7 @@ const RegisterPage = () => {
                         <div className='flex flex-col relative pb-8 lg:pb-1'>
                             <input
                                 onChange={e => setAddress(e.target.value)}
-                                className='z-[1] tracking-wider appearance-none bg-transparent peer pb-2 border-b border-gray-800 outline-none mb-6 placeholder-transparent focus-within:border-[#161d3f] focus-within:border-b-2'
+                                className='z-[1] rounded-none tracking-wider appearance-none bg-transparent peer pb-2 border-b border-gray-800 outline-none mb-6 placeholder-transparent focus-within:border-[#161d3f] focus-within:border-b-2'
                                 type='text'
                                 placeholder=' '
                                 value={address}
@@ -279,7 +279,7 @@ const RegisterPage = () => {
                                 name='phone'
                                 value={phone}
                                 onValueChange={value => setPhone(value.formattedValue)}
-                                className='z-[1] tracking-wider appearance-none bg-transparent peer pb-2 border-b border-gray-800 outline-none mb-6 placeholder-transparent focus-within:border-[#161d3f] focus-within:border-b-2'
+                                className='z-[1] rounded-none tracking-wider appearance-none bg-transparent peer pb-2 border-b border-gray-800 outline-none mb-6 placeholder-transparent focus-within:border-[#161d3f] focus-within:border-b-2'
 
 
                             />

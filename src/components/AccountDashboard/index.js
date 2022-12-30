@@ -25,6 +25,7 @@ import { getMyMessages } from '../../redux/Slices/messagesSlice'
 import accounting from 'accounting'
 import { logout } from '../../redux/Slices/authSlice'
 import { motion } from 'framer-motion'
+import { Watch } from 'react-loader-spinner'
 
 const AccountDashboard = ({ toggleProfileDropdown, profileDropdown }) => {
     const stickyElement = useRef(null);
@@ -58,7 +59,7 @@ const AccountDashboard = ({ toggleProfileDropdown, profileDropdown }) => {
     useEffect(() => {
         dispatch(getMyAccounts());
         dispatch(getMyStats())
-        dispatch(getMyTransactions({page: 1, limit: 4}))
+        dispatch(getMyTransactions({ page: 1, limit: 4 }))
         dispatch(getMyMessages())
 
 
@@ -239,12 +240,25 @@ const AccountDashboard = ({ toggleProfileDropdown, profileDropdown }) => {
                                                     <div key={transaction?._id} className='w-full my-3 border-b border-gray-300 pb-3'>
                                                         <h1 className='font-semibold text-[.9rem] flex items-center uppercase'>{transaction?.transactionType}{transaction?.transactionType === 'transfer' ? <BsArrowUpRight className='text-red-500' /> : <BsArrowDownLeft className='text-green-600' />}</h1>
                                                         <div className='flex justify-between leading-5'>
-                                                            <div className='flex text-sm'>
+                                                            <div className='flex text-sm items-center'>
                                                                 {
                                                                     transaction?.status === 'pending' ?
-                                                                        <ClockLoader size={16} speedMultiplier={0.5} color='#AEA7A7B8' />
+                                                                        <Watch
+                                                                            height="16"
+                                                                            width="16"
+                                                                            radius="40"
+                                                                            color="#4fa94d"
+                                                                            ariaLabel="watch-loading"
+                                                                            wrapperStyle={{}}
+                                                                            wrapperClassName=""
+
+                                                                            visible={true}
+
+                                                                        />
                                                                         :
-                                                                        <h1 className={'font-semibold capitalize ' + (transaction.status === 'failed' && 'text-red-500 ') + (transaction?.status === 'complete' && ' text-green-600 ')}>{transaction?.status}</h1>
+                                                                        <h1 className={'font-semibold text-xs capitalize ' + (transaction.status === 'failed' && 'text-red-500 border-l border-red-600 p-[0.2rem] rounded-sm ') + (transaction?.status === 'complete' && ' text-green-600  border-l border-green-600 p-[0.2rem] rounded-sm  ')}>
+                                                                            {transaction?.status === 'complete' ? 'sent' : transaction?.status}
+                                                                        </h1>
                                                                 }
                                                                 <h1 className='mx-2 text-gray-500 text-[.8rem] font-light lg:font-normal ' >{moment(transaction?.createdAt).format('LLL')}</h1>
                                                                 <h1 className=' text-gray-500'>...{transaction?.accountId?.accountNumber.slice(-4)} {transaction?.accountId?.accountType}</h1>

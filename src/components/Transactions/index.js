@@ -11,12 +11,12 @@ import ReactPaginate from 'react-paginate';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { FaEllipsisH } from 'react-icons/fa';
 import { useLocation } from 'react-router-dom';
-
+import { Watch } from 'react-loader-spinner'
 
 const Transactions = () => {
     const dispatch = useDispatch();
     const [page, setPage] = useState(1);
-    
+
 
 
 
@@ -27,7 +27,7 @@ const Transactions = () => {
 
     const handlePageClick = (event) => {
         setPage(event.selected + 1);
-    
+
     };
 
     const {
@@ -51,7 +51,7 @@ const Transactions = () => {
                         </div>
 
                         {
-                            loading ? <div className='h-36 w-full items-center justify-center flex  '><span className="loader"></span></div>  : !transactions?.length ? (
+                            loading ? <div className='h-36 w-full items-center justify-center flex  '><span className="loader"></span></div> : !transactions?.length ? (
                                 <div className="px-2 flex items-center justify-center p-4 h-full">
                                     <div className=' bg-gray-200 p-4 rounded-3xl'>
                                         No Transactions
@@ -61,15 +61,27 @@ const Transactions = () => {
                                 transactions && transactions.map((transaction) => (
                                     <div key={transaction?._id} className='w-full my-3 border-b border-gray-300 pb-3'>
                                         <h1 className='font-semibold text-[.9rem] flex items-center uppercase'>{transaction?.transactionType}{transaction?.transactionType === 'transfer' ? <BsArrowUpRight className='text-red-500' /> : <BsArrowDownLeft className='text-green-600' />}</h1>
-                                        <div className='flex justify-between leading-5'>
-                                            <div className='flex text-sm'>
+                                        <div className='flex justify-between  leading-5'>
+                                            <div className='flex text-sm items-center'>
                                                 {
                                                     transaction?.status === 'pending' ?
-                                                        <ClockLoader size={16} speedMultiplier={0.5} color='#AEA7A7B8' />
+                                                        <Watch
+                                                            height="16"
+                                                            width="16"
+                                                            radius="40"
+                                                            color="#4fa94d"
+                                                            ariaLabel="watch-loading"
+                                                            wrapperStyle={{}}
+                                                            wrapperClassName=""
+                                                            visible={true}
+
+                                                        />
                                                         :
-                                                        <h1 className={'font-semibold text-sm capitalize ' + (transaction.status === 'failed' && 'text-red-500 ') + (transaction?.status === 'complete' && ' text-green-600 ')}>{transaction?.status}</h1>
+                                                        <h1 className={'font-semibold text-sm capitalize ' + (transaction.status === 'failed' && 'text-red-500 border-l border-red-600 p-[0.2rem] rounded-sm ') + (transaction?.status === 'complete' && ' text-green-600  border-l border-green-600 p-[0.2rem] rounded-sm  ')}>
+                                                            {transaction?.status === 'complete' ? 'sent' : transaction?.status}
+                                                        </h1>
                                                 }
-                                                <h1 className='mx-2 text-gray-500 text-[.8rem] font-light lg:font-normal'>{moment(transaction?.createdAt).format('LLL')}</h1>
+                                                <h1 className=' text-gray-500 mx-2 text-[.8rem] font-light lg:font-normal'>{moment(transaction?.createdAt).format('LLL')}</h1>
                                                 <h1 className=' text-gray-500'>...{transaction?.accountId?.accountNumber.slice(-4)} {transaction?.accountId?.accountType}</h1>
                                             </div>
                                             <h1 className={'font-semibold  whitespace-nowrap ' + (transaction?.transactionType === 'transfer' ? 'text-red-500' : 'text-[#00A389]')}>

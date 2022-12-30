@@ -86,7 +86,7 @@ const LoginPage = () => {
 
                             />
                             <label className='flex lg:flex duration-200 transition-all ease-in-out absolute top-[-2rem] peer-focus:top-[-2rem] peer-focus:scale-90  peer-placeholder-shown:top-[0] pointer-events-none'>
-                                <FingerPrintIcon className='w-6 mr-2 flex' />
+                                <FingerPrintIcon className='w-4 mr-2 flex' />
                                 User ID
                             </label>
 
@@ -104,7 +104,7 @@ const LoginPage = () => {
                                 {passwordVisible ? <EyeOffIcon /> : <EyeIcon />}
                             </div>
                             <label className='flex lg:flex duration-200 transition-all ease-in-out absolute top-[-2rem] peer-focus:top-[-2rem] peer-focus:scale-90  peer-placeholder-shown:top-[0] pointer-events-none'>
-                                <LockClosedIcon className='w-6 mr-2 flex' />
+                                <LockClosedIcon className='w-4 mr-2 flex' />
                                 Password
                             </label>
 

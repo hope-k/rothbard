@@ -26,6 +26,8 @@ import accounting from 'accounting'
 import { logout } from '../../redux/Slices/authSlice'
 import { motion } from 'framer-motion'
 import { Watch } from 'react-loader-spinner'
+import TransactionSkeleton from '../TransactionSkeleton/index.'
+import AccountSkeleton from '../AccountSkeleton'
 
 const AccountDashboard = ({ toggleProfileDropdown, profileDropdown }) => {
     const stickyElement = useRef(null);
@@ -70,7 +72,7 @@ const AccountDashboard = ({ toggleProfileDropdown, profileDropdown }) => {
     const { stats } = useSelector(state => state.stats);
     const { transactions } = useSelector(state => state.transactions);
     const { messages } = useSelector(state => state.messages);
-    const { accounts, error, loading } = useSelector(state => state.accounts);
+    const { accounts, loading } = useSelector(state => state.accounts);
     const myDate = new Date();
     const hrs = myDate.getHours();
 
@@ -180,10 +182,10 @@ const AccountDashboard = ({ toggleProfileDropdown, profileDropdown }) => {
                         </div>
                         <div className=''>
                             <div className={'mb-4 bg-gray-100 p-4 lg:p-[5rem] rounded-xl'}>
-                                <div className='flex flex-wrap justify-between'>
+                                <motion.div layout className='flex flex-wrap justify-between'>
 
                                     {
-                                        !loading && !accounts?.length ? (
+                                        loading ? <AccountSkeleton/> : !accounts?.length ? (
                                             <div className='w-full p-10 text-2xl text-red-600 bg-gray-200 rounded-3xl font-extralight'>!!NO ACCOUNTS OPENED CONTACT ADMIN!!</div>
                                         ) :
 
@@ -207,7 +209,7 @@ const AccountDashboard = ({ toggleProfileDropdown, profileDropdown }) => {
                                             ))
 
                                     }
-                                </div>
+                                </motion.div>
 
                                 <div className='flex flex-wrap justify-around'>
 
@@ -222,61 +224,62 @@ const AccountDashboard = ({ toggleProfileDropdown, profileDropdown }) => {
 
                             </div>
                             <div className='w-full  grid lg:grid-cols-2 lg:grid-rows-2 gap-[1rem] grid-cols-1'>
-                                <div className='bg-gray-100 h-full w-full row-span-2 row rounded-xl'>
+                                <motion.div layout className='bg-gray-100 h-full w-full row-span-2 row rounded-xl'>
                                     <div className='p-6'>
                                         <div className='flex justify-between mb-6 items-center'>
                                             <h1 className='font-semibold'>Recent Transactions</h1>
                                             <SearchIcon className='w-6' />
                                         </div>
                                         {
-                                            !loading && !recentTransactions?.length ? (
-                                                <div className="px-2 flex items-center justify-center p-4 h-full">
-                                                    <div className=' bg-gray-200 p-4 rounded-3xl'>
-                                                        No Recent Transactions
-                                                    </div>
-                                                </div>
-                                            ) :
-                                                recentTransactions && recentTransactions.map((transaction) => (
-                                                    <div key={transaction?._id} className='w-full my-3 border-b border-gray-300 pb-3'>
-                                                        <h1 className='font-semibold text-[.9rem] flex items-center uppercase'>{transaction?.transactionType}{transaction?.transactionType === 'transfer' ? <BsArrowUpRight className='text-red-500' /> : <BsArrowDownLeft className='text-green-600' />}</h1>
-                                                        <div className='flex justify-between leading-5'>
-                                                            <div className='flex text-sm items-center'>
-                                                                {
-                                                                    transaction?.status === 'pending' ?
-                                                                        <Watch
-                                                                            height="16"
-                                                                            width="16"
-                                                                            radius="40"
-                                                                            color="#4fa94d"
-                                                                            ariaLabel="watch-loading"
-                                                                            wrapperStyle={{}}
-                                                                            wrapperClassName=""
-
-                                                                            visible={true}
-
-                                                                        />
-                                                                        :
-                                                                        <h1 className={'font-semibold text-xs capitalize ' + (transaction.status === 'failed' && 'text-red-500 border-l border-red-600 p-[0.2rem] rounded-sm ') + (transaction?.status === 'complete' && ' text-green-600  border-l border-green-600 p-[0.2rem] rounded-sm  ')}>
-                                                                            {transaction?.status === 'complete' ? 'sent' : transaction?.status}
-                                                                        </h1>
-                                                                }
-                                                                <h1 className='mx-2 text-gray-500 text-[.8rem] font-light lg:font-normal ' >{moment(transaction?.createdAt).format('LLL')}</h1>
-                                                                <h1 className=' text-gray-500'>...{transaction?.accountId?.accountNumber.slice(-4)} {transaction?.accountId?.accountType}</h1>
-                                                            </div>
-                                                            <h1 className={'font-semibold whitespace-nowrap ' + (transaction?.transactionType === 'transfer' ? 'text-red-500' : 'text-[#00A389]')}>
-                                                                {
-                                                                    transaction?.transactionType === 'transfer' ? '-' + accounting.formatMoney(transaction?.amount) : accounting.formatMoney(transaction?.amount)
-
-                                                                }
-                                                            </h1>
+                                            loading ? <TransactionSkeleton numOfSkeletons={4} />
+                                                : !recentTransactions?.length ? (
+                                                    <div className="px-2 flex items-center justify-center p-4 h-full">
+                                                        <div className=' bg-gray-200 p-4 rounded-3xl'>
+                                                            No Recent Transactions
                                                         </div>
                                                     </div>
-                                                ))
+                                                ) :
+                                                    recentTransactions && recentTransactions.map((transaction) => (
+                                                        <div key={transaction?._id} className='w-full my-3 border-b border-gray-300 pb-3'>
+                                                            <h1 className='font-semibold text-[.9rem] flex items-center uppercase'>{transaction?.transactionType}{transaction?.transactionType === 'transfer' ? <BsArrowUpRight className='text-red-500' /> : <BsArrowDownLeft className='text-green-600' />}</h1>
+                                                            <div className='flex justify-between leading-5'>
+                                                                <div className='flex text-sm items-center'>
+                                                                    {
+                                                                        transaction?.status === 'pending' ?
+                                                                            <Watch
+                                                                                height="16"
+                                                                                width="16"
+                                                                                radius="40"
+                                                                                color="#4fa94d"
+                                                                                ariaLabel="watch-loading"
+                                                                                wrapperStyle={{}}
+                                                                                wrapperClassName=""
+
+                                                                                visible={true}
+
+                                                                            />
+                                                                            :
+                                                                            <h1 className={'font-semibold text-xs capitalize ' + (transaction.status === 'failed' && 'text-red-500 border-l border-red-600 p-[0.2rem] rounded-sm ') + (transaction?.status === 'complete' && ' text-green-600  border-l border-green-600 p-[0.2rem] rounded-sm  ')}>
+                                                                                {transaction?.status === 'complete' ? 'sent' : transaction?.status}
+                                                                            </h1>
+                                                                    }
+                                                                    <h1 className='mx-2 text-gray-500 text-[.8rem] font-light lg:font-normal ' >{moment(transaction?.createdAt).format('LLL')}</h1>
+                                                                    <h1 className=' text-gray-500'>...{transaction?.accountId?.accountNumber.slice(-4)} {transaction?.accountId?.accountType}</h1>
+                                                                </div>
+                                                                <h1 className={'font-semibold whitespace-nowrap ' + (transaction?.transactionType === 'transfer' ? 'text-red-500' : 'text-[#00A389]')}>
+                                                                    {
+                                                                        transaction?.transactionType === 'transfer' ? '-' + accounting.formatMoney(transaction?.amount) : accounting.formatMoney(transaction?.amount)
+
+                                                                    }
+                                                                </h1>
+                                                            </div>
+                                                        </div>
+                                                    ))
                                         }
 
 
                                     </div>
-                                </div>
+                                </motion.div>
                                 <div className='bg-gray-100 rounded-xl '>
                                     <div className="px-2">
                                         <h1 className='font-semibold px-4 py-4'>Payments</h1>
@@ -309,7 +312,7 @@ const AccountDashboard = ({ toggleProfileDropdown, profileDropdown }) => {
                                             recentMessages && recentMessages.map((message) => (
                                                 <>
 
-                                                    <div key={message?._id} className='px-2 flex  p-2 mt-6 relative bg-slate-50 rounded-md shadow-lg'>
+                                                    <div key={message?._id} className='px-2 flex  p-3 mt-6 relative bg-slate-50 rounded-md shadow-lg'>
                                                         <div className="flex flex-col">
                                                             <h1 className='font-normal text-[.9rem] border-[1.3px] border-teal-500 w-fit p-[.2rem] rounded-lg '>{message?.title}</h1>
                                                             <h1 className='text-[.92rem] font-[350] border-l border-yellow-600 pl-1 mt-3 rounded'>{message?.text}</h1>

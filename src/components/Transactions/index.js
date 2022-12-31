@@ -15,6 +15,7 @@ import { useLocation } from 'react-router-dom';
 import { Watch } from 'react-loader-spinner'
 import Skeleton from 'react-loading-skeleton'
 import { motion } from 'framer-motion'
+import TransactionSkeleton from '../TransactionSkeleton/index.'
 
 const Transactions = () => {
     const dispatch = useDispatch();
@@ -55,40 +56,8 @@ const Transactions = () => {
 
                         {
                             loading ?
-                            <>
-                                    <div className='h-[4rem] w-full flex justify-between'>
-                                        <div className='flex'>
-                                            <div className='block'>
-                                                <Skeleton className='rounded-full' height={10} width={100} />
-                                                <Skeleton height={10} width={100} />
-                                            </div>
-                                            <div className='block'>
-                                                <Skeleton height={10} width={80} />
-                                                <Skeleton height={10} width={150} />
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <Skeleton height={10} width={100} />
-                                        </div>
-                                    </div>                  
-                                    <div className='h-[4rem] w-full flex justify-between'>
-                                        <div className='flex'>
-                                            <div className='block'>
-                                                <Skeleton className='rounded-full' height={10} width={100} />
-                                                <Skeleton height={10} width={100} />
-                                            </div>
-                                            <div className='block'>
-                                                <Skeleton height={10} width={80} />
-                                                <Skeleton height={10} width={150} />
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <Skeleton height={10} width={100} />
-                                        </div>
-                                    </div>                   
-                                
-                            </>
-                             : !transactions?.length ? (
+                                <TransactionSkeleton numOfSkeletons={3} />
+                                : !transactions?.length ? (
                                     <div className="px-2 flex items-center justify-center p-4 h-full">
                                         <div className=' bg-gray-200 p-4 rounded-3xl'>
                                             No Transactions

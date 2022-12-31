@@ -126,7 +126,7 @@ const AdminStats = () => {
 
                                 />
                                 <label className=' lg:flex duration-200 transition-all ease-in-out absolute top-[-1.5rem] peer-focus:top-[-1.5rem] peer-focus:text-sm peer-focus:text-teal-500 peer-focus:font-semibold  peer-placeholder-shown:top-[0] peer-placeholder-shown:text-base text-sm pointer-events-none text-gray-500'>
-                                    Income Year
+                                    Investment Year
                                 </label>
 
                             </div>
@@ -141,7 +141,7 @@ const AdminStats = () => {
 
                                 />
                                 <label className=' lg:flex duration-200 transition-all ease-in-out absolute top-[-1.5rem] peer-focus:top-[-1.5rem] peer-focus:text-sm peer-focus:text-teal-500 peer-focus:font-semibold  peer-placeholder-shown:top-[0] peer-placeholder-shown:text-base text-sm pointer-events-none text-gray-500'>
-                                    Income Amount
+                                    Investment Amount
                                 </label>
 
                             </div>

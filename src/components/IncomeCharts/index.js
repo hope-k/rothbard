@@ -31,7 +31,7 @@ const IncomeCharts = ({ stats }) => {
         labels: stats && stats.map(stat => stat?.income?.year),
         datasets: [
             {
-                label: 'Checking Income',
+                label: 'Investments',
                 fill: false,
                 lineTension: 0,
                 backgroundColor: '#FF8C00',
@@ -51,7 +51,7 @@ const IncomeCharts = ({ stats }) => {
                 position: 'top',
             },
             title: {
-                text: 'Income Stats Over Last 5 Years',
+                text: 'Investments Stats Over Last 5 Years',
                 display: true,
             },
         },

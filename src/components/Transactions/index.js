@@ -41,7 +41,7 @@ const Transactions = () => {
         hasPrevPage,
     } = useSelector(state => state.transactions)
     return (
-        <div className='lg:w-[83.6%] lg:absolute lg:right-0 z-50 relative '>
+        <motion.div layout className='lg:w-[83.6%] lg:absolute lg:right-0 z-50 relative '>
             <h1 className='lg:px-[7rem] top-[15rem] p-4 text-white font-semibold text-xl flex items-center fixed lg:top-40'>
                 Transactions <GiChecklist className='ml-2 text-2xl text-white' />
             </h1>
@@ -161,7 +161,7 @@ const Transactions = () => {
             </div>
 
 
-        </div>
+        </motion.div>
     )
 }
 

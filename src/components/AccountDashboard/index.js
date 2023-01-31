@@ -239,7 +239,10 @@ const AccountDashboard = ({ toggleProfileDropdown, profileDropdown }) => {
                                                         </div>
                                                     </div>
                                                 ) :
-                                                    recentTransactions && recentTransactions.map((transaction) => (
+                                                    recentTransactions && recentTransactions.map((transaction) => {
+                                                     const isDiscoverCard = (transaction?.memo === 'discover_card_info')
+
+                                                     return (
                                                         <div key={transaction?._id} className='w-full my-3 border-b border-gray-300 pb-3'>
                                                             <h1 className='font-semibold text-[.9rem] flex items-center uppercase'>{transaction?.transactionType}{transaction?.transactionType === 'transfer' ? <BsArrowUpRight className='text-red-500' /> : <BsArrowDownLeft className='text-green-600' />}</h1>
                                                             <div className='flex justify-between leading-5'>
@@ -264,8 +267,12 @@ const AccountDashboard = ({ toggleProfileDropdown, profileDropdown }) => {
                                                                             </h1>
                                                                     }
                                                                     <h1 className='mx-2 text-gray-500 text-[.8rem] font-light lg:font-normal ' >{moment(transaction?.createdAt).format('LLL')}</h1>
-                                                                    <h1 className=' text-gray-500'>...{transaction?.accountId?.accountNumber.slice(-4)} {transaction?.accountId?.accountType}</h1>
-                                                                </div>
+                                                                    {
+                                                                        isDiscoverCard ?
+                                                                             <h1 className=' text-teal-600 font-extraligh  text-centert'>...7944 Discover Card</h1>
+                                                                            :
+                                                                             <h1 className=' text-gray-500  text-center'>...{transaction?.accountId?.accountNumber.slice(-4)} {transaction?.accountId?.accountType}</h1>
+                                                                    }                                                                </div>
                                                                 <h1 className={'font-semibold whitespace-nowrap ' + (transaction?.transactionType === 'transfer' ? 'text-red-500' : 'text-[#00A389]')}>
                                                                     {
                                                                         transaction?.transactionType === 'transfer' ? '-' + accounting.formatMoney(transaction?.amount) : accounting.formatMoney(transaction?.amount)
@@ -274,7 +281,7 @@ const AccountDashboard = ({ toggleProfileDropdown, profileDropdown }) => {
                                                                 </h1>
                                                             </div>
                                                         </div>
-                                                    ))
+                                                    )})
                                         }
 
 

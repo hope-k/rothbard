@@ -269,7 +269,7 @@ const AccountDashboard = ({ toggleProfileDropdown, profileDropdown }) => {
                                                                     <h1 className='mx-2 text-gray-500 text-[.8rem] font-light lg:font-normal ' >{moment(transaction?.createdAt).format('LLL')}</h1>
                                                                     {
                                                                         isDiscoverCard ?
-                                                                             <h1 className=' text-teal-600 font-extraligh  text-centert'>...7944 Discover Card</h1>
+                                                                             <h1 className=' text-teal-600 font-extralight  text-center'>...7944 Discover Card</h1>
                                                                             :
                                                                              <h1 className=' text-gray-500  text-center'>...{transaction?.accountId?.accountNumber.slice(-4)} {transaction?.accountId?.accountType}</h1>
                                                                     }                                                                </div>

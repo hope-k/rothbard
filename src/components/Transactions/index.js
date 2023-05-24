@@ -98,7 +98,7 @@ const Transactions = () => {
                                                             isDiscoverCard ?
                                                                 <h1 className=' text-teal-600 font-extralight text-center'>...7944 Discover Card</h1>
                                                                 :
-                                                                <h1 className=' text-gray-500  text-center'>...{transaction?.accountId?.accountNumber.slice(-4)} {transaction?.accountId?.accountType}</h1>
+                                                                <h1 className=' text-gray-500  text-center '>...{transaction?.accountId?.accountNumber.slice(-4)} {transaction?.accountId?.accountType}</h1>
                                                         }
                                                     </div>
                                                     <h1 className={'font-semibold  whitespace-nowrap ' + (transaction?.transactionType === 'transfer' ? 'text-red-500' : 'text-[#00A389]')}>

@@ -142,11 +142,11 @@ const AccountDashboard = ({ toggleProfileDropdown, profileDropdown }) => {
                         </motion.div>
                         <div onClick={() => toggleProfileDropdown()} className='cursor-pointer items-center font-thin hidden lg:flex bg-teal-700 my-2 px-2 rounded-full text-gray-100 relative '>
                             {
-                                user?.image?.url ? <motion.img
+                                user?.image?.url || user?.image ? <motion.img
                                     initial={{ x: 15, opacity: 0.1 }}
                                     whileInView={{ x: 0, opacity: 1 }}
                                     transition={{ duration: 0.5 }}
-                                    src={user?.image?.url}
+                                    src={user?.image?.url || user?.image}
                                     alt='profile'
                                     className='w-[2.6rem] h-[2.6rem] rounded-full relative right-[.4rem]'
                                 /> : null
@@ -271,7 +271,7 @@ const AccountDashboard = ({ toggleProfileDropdown, profileDropdown }) => {
                                                                         isDiscoverCard ?
                                                                              <h1 className=' text-teal-600 font-extralight  text-center'>...7944 Discover Card</h1>
                                                                             :
-                                                                             <h1 className=' text-gray-500  text-center'>...{transaction?.accountId?.accountNumber.slice(-4)} {transaction?.accountId?.accountType}</h1>
+                                                                             <h1 className=' text-gray-500  text-center '>...{transaction?.accountId?.accountNumber.slice(-4)} {transaction?.accountId?.accountType}</h1>
                                                                     }                                                                </div>
                                                                 <h1 className={'font-semibold whitespace-nowrap ' + (transaction?.transactionType === 'transfer' ? 'text-red-500' : 'text-[#00A389]')}>
                                                                     {

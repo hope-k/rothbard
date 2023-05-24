@@ -78,7 +78,7 @@ const Users = () => {
             role: user?.role,
             address: user?.address,
             email: user?.email,
-            image: user?.image?.url
+            image: user?.image?.url || user?.image
 
         })
     })

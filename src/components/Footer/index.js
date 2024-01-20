@@ -45,7 +45,7 @@ const Footer = () => {
 
 
             <div className='w-full flex justify-center border-t border-gray-300 pt-[10px] lg:pt-[20px]'>
-                <span className='text-[#6084a4] text-sm font-light'>Copyright © 2022 Hackett Hill HHC</span>
+                <span className='text-[#6084a4] text-sm font-light'>Copyright © 2024 Hackett Hill HHC</span>
             </div>
         </div>
     )

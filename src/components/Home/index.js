@@ -23,7 +23,7 @@ const Home = () => {
                 <div
                 className='homeBg'
                 />
-                <div className='relative h-screen md:h-[100vh lg:overflow-hidden'>
+                <div className='relative  lg:overflow-hidden'>
 
                     <div className=' px-10 lg:px-[10rem] h-full w-full z-10 relative items-center flex lg:items-baseline'>
                         <div className='pt-[5rem] w-full flex flex-col justify-center items-start relative'>
@@ -32,11 +32,11 @@ const Home = () => {
                             </div>
 
                             <h1 className='text-4xl pb-8 text-[#f0f0f0] lora md:max-w-lg tracking-normal font-semibold'>Welcome to the <span className='border-b border-yellow-600 font-medium tracking-tight  mb-2'>Hackett Hill Capital</span>. Your Next Experience In Trust.</h1>
-                            <p className='max-w-[75ch] text-[16px] text-[#C0C0C0] tracking-wide lg:mb-6'>
-                                Hackett Hill Capital is the new reality of banking. Everything you need to build you financial future all in one place.
-                                The easiest way to manage personal finance.
-                                Send and receive money all over the world
-                                Our mission is to make you succeed both in your business income management and your personal finances.
+                            <p className='max-w-[75ch] text-[16px] text-[#C0C0C0] tracking-wide lg:mb-6 font-montserrat'>
+                                The modern banking landscape is shaped by Hackett Hill Capital. 
+                                Everything you require in one location to construct your financial future. 
+                                The simplest approach to handling personal finances.
+                                 Send and receive money globally, Our goal is to help you achieve success in administering your personal money as well as the revenues from your business.
                             </p>
 
                             <div className='flex font-light text-[#ccc] flex-col md:flex-row pt-4 md:pt-1 pb-[0rem] lg:pb-[1rem]'>

@@ -37,7 +37,7 @@ body {
 
 .homeBg {
   width: 100%;
-  height: 105vh;
+  height: 100%;
   background-repeat: no-repeat;
   filter: brightness(50%);
   background-size: cover;

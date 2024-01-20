@@ -17,15 +17,15 @@ const Home = () => {
     const serviceListTwo = ['Easy transfers', 'A powerful security infrastructure', 'Business without borders', 'Deposit checks instantly', 'Worldwide Coverage', 'Affiliates and partnership']
     const serviceListThree = ['Corporate Cards', 'International Investments', 'Direct Debit', 'Premium Support', 'Automated Accounting', 'Business Banking']
     return (
-        <div>
+        <div className=''>
 
-            <div className='relative' id='homePage'>
-                <div
-                className='homeBg'
-                />
+            <div id='homePage'>
                 <div className='relative  lg:overflow-hidden'>
 
-                    <div className=' px-10 lg:px-[10rem] h-full w-full z-10 relative items-center flex lg:items-baseline'>
+                    <div
+                        className='homeBg'
+                    />
+                    <div className=' px-10 md:pb-[10rem] lg:px-[10rem] h-full w-full z-10 relative items-center flex lg:items-baseline'>
                         <div className='pt-[5rem] w-full flex flex-col justify-center items-start relative'>
                             <div id='heading' className='relative whitespace-nowrap flex text-[#cababa] text-[18px] tracking-wider font-light pb-11 pt-8 lg:pt-8'>
                                 <span id='heading'>Invest.</span><span className='ml-6'><ShieldCheckIcon className='w-5 absolute left-[3.5rem] bottom-[3rem]' /> Secure</span> . Guarantee
@@ -33,13 +33,13 @@ const Home = () => {
 
                             <h1 className='text-4xl pb-8 text-[#f0f0f0] lora md:max-w-lg tracking-normal font-semibold'>Welcome to the <span className='border-b border-yellow-600 font-medium tracking-tight  mb-2'>Hackett Hill Capital</span>. Your Next Experience In Trust.</h1>
                             <p className='max-w-[75ch] text-[16px] text-[#C0C0C0] tracking-wide lg:mb-6 font-montserrat'>
-                                The modern banking landscape is shaped by Hackett Hill Capital. 
-                                Everything you require in one location to construct your financial future. 
+                                The modern banking landscape is shaped by Hackett Hill Capital.
+                                Everything you require in one location to construct your financial future.
                                 The simplest approach to handling personal finances.
-                                 Send and receive money globally, Our goal is to help you achieve success in administering your personal money as well as the revenues from your business.
+                                Send and receive money globally, Our goal is to help you achieve success in administering your personal money as well as the revenues from your business.
                             </p>
 
-                            <div className='flex font-light text-[#ccc] flex-col md:flex-row pt-4 md:pt-1 pb-[0rem] lg:pb-[1rem]'>
+                            <div className='flex font-light text-[#ccc] flex-col md:flex-row  md:pt-1 py-[2rem] '>
                                 <Link to='/sign-in' id='bankings' className=' mr-20 cursor-pointer hover:text-blue-300 duration-500 hover:border-b-4 pb-4 border-cyan-700 mb-4 '>
                                     <div className='relative '>
                                         <div className='absolute top-3'>

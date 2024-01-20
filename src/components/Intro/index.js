@@ -58,7 +58,7 @@ const Intro = () => {
 
 
     return (
-        <div className=' px-10 lg:pt-[20rem] py-[10rem]  w-full  bg-slate-100'>
+        <div className=' px-10 py-[10rem]  w-full  bg-slate-100'>
             <div className='bg-white flex justify-between rounded-2xl shadow-2xl border border-gray-200 lg:flex-row flex-col'  >
                 <div className='m-3 border-r border-gray-200 flex flex-col justify-center items-center p-5'>
                     <div  className='w-[5rem] mb-4'>

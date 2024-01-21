@@ -64,8 +64,8 @@ const Intro = () => {
                     <div  className='w-[5rem] mb-4'>
                         <PiggyBank />
                     </div>
-                    <h1 className='block font-semibold text-[1.4rem] mb-4'> Saving Benefits</h1>
-                    <span className='text-[14px] text-[#6084a4]'>
+                    <h1 className='block font-semibold text-lg text-[1.4rem] mb-4 whitespace-nowrap'>Saving Benefits
+                    </h1>                    <span className='text-[14px] text-[#6084a4]'>
                         When you save with our savings accounts you get intrest on your money monthly..
                     </span>
                 </div>

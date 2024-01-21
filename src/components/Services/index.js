@@ -12,7 +12,7 @@ const Services = ({
   return (
     <div className={`${reverseSection} border-b border-yellow-600 flex px-[2rem] lg:px-[8rem] bg-[#f7fafd] w-full h-full lg:h-[100vh] items-center justify-between flex-wrap flex-col lg:flex-row `}>
       <div className='lg:w-[45%] w-full'>
-        <h1 className='text-[28px] mb-12 font-semibold'>{title}</h1>
+        <h1 className='text-[28px] mb-12 font-semibold font-montserrat tracking-normal'>{title}</h1>
         <div>
           <p className='text-[#6084a4] mb-6'>{description}</p>
           <ul className='grid lg:grid-cols-2 lg:grid-rows-3 w-full'>

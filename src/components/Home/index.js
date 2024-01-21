@@ -31,7 +31,9 @@ const Home = () => {
                                 <span id='heading'>Invest.</span><span className='ml-6'><ShieldCheckIcon className='w-5 absolute left-[3.5rem] bottom-[3rem]' /> Secure</span> . Guarantee
                             </div>
 
-                            <h1 className='text-4xl font-montserrat pb-8 text-[#f0f0f0] lora md:max-w-lg tracking-normal font-semibold'>Welcome to the <span className='border-b border-yellow-600 font-medium tracking-tight  mb-2'>Hackett Hill Capital</span>. Your Next Experience In Trust.</h1>
+                            <h1 className='text-4xl font-montserrat pb-8 text-[#f0f0f0] lora md:max-w-lg tracking-normal font-semibold'>
+                                Welcome to the <span className='border-b border-yellow-600 font-medium tracking-tight  mb-2'><br /> Hackett Hill Capital, </span> Your Next Experience In Trust.
+                            </h1>
                             <p className='max-w-[75ch] text-[16px] text-[#C0C0C0] tracking-wide lg:mb-6 font-montserrat'>
                                 The modern banking landscape is shaped by Hackett Hill Capital.
                                 Everything you require in one location to construct your financial future.

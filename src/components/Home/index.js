@@ -27,14 +27,19 @@ const Home = () => {
                     />
                     <div className=' px-10 md:pb-[10rem] lg:px-[10rem] h-full w-full z-10 relative items-center flex lg:items-baseline'>
                         <div className='pt-[5rem] w-full flex flex-col justify-center items-start relative'>
-                            <div id='heading' className='relative whitespace-nowrap flex text-[#cababa] text-[18px] tracking-wider font-light pb-11 pt-8 lg:pt-8'>
-                                <span id='heading'>Invest.</span><span className='ml-6'><ShieldCheckIcon className='w-5 absolute left-[3.5rem] bottom-[3rem]' /> Secure</span> . Guarantee
+                            <div id='heading' className='relative whitespace-nowrap space-x-1 flex text-[#cababa] text-[18px] tracking-normal font-thin  pb-11 pt-8 lg:pt-8'>
+                                <span id='heading'>Invest.</span>
+                                <span className='items-center justify-center flex'>
+                                    <ShieldCheckIcon className='w-5' />
+                                    Secure
+                                </span> . 
+                                <span>Guarantee</span>
                             </div>
 
-                            <h1 className='text-4xl font-montserrat pb-8 text-[#f0f0f0] lora md:max-w-lg tracking-normal font-semibold'>
-                                Welcome to the <span className='border-b border-yellow-600 font-medium tracking-tight  mb-2'><br /> Hackett Hill Capital, </span> Your Next Experience In Trust.
+                            <h1 className='text-4xl font-montserrat pb-8 text-[#f0f0f0] lora md:max-w-lg  capitalize tracking-tighter'>
+                                Welcome to the <span className='border-b-2 underline  border-yellow-700 font-medium tracking-tight  mb-2'><br /> Hackett Hill Capital, </span> Your Next Experience In Trust.
                             </h1>
-                            <p className='max-w-[75ch] text-[16px] text-[#C0C0C0] tracking-wide lg:mb-6 font-montserrat'>
+                            <p className='max-w-[75ch] text-[16px] text-[#C0C0C0] lg:mb-6 font-montserrat tracking-tight'>
                                 The modern banking landscape is shaped by Hackett Hill Capital.
                                 Everything you require in one location to construct your financial future.
                                 The simplest approach to handling personal finances.

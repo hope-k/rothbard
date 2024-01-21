@@ -46,7 +46,7 @@ const Home = () => {
         <div className=''>
 
             <div id='homePage'>
-                <div className='relative  lg:overflow-hidden'>
+                <div className='relative  overflow-hidden'>
                     <AnimatePresence presenceAffectsLayout>
                         <motion.div
                             initial={{ opacity: 0.5, scale: 1, filter: 'brightness(40%)' }}

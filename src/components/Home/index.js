@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import { ShieldCheckIcon } from '@heroicons/react/outline'
 import { gsap } from 'gsap'
 import { TextPlugin } from "gsap/TextPlugin";
@@ -7,24 +7,75 @@ import Intro from '../Intro'
 import Services from '../Services';
 import Footer from '../Footer';
 import { Parallax, Background } from 'react-parallax';
+import { motion, AnimatePresence } from 'framer-motion'
 
 gsap.registerPlugin(TextPlugin);
 
 const Home = () => {
+    const bgImages = [
+        '/images/bg1.jpg',
+        '/images/bg2.jpg',
+        '/images/bg3.jpg',
+        '/images/bg4.jpg',
+        '/images/bg5.jpg',
+        '/images/bg6.jpg',
+        '/images/bg7.jpg',
 
+    ]
+    const getRandomImage = () => {
+        const randomIndex = Math.floor(Math.random() * bgImages.length);
+        return bgImages[randomIndex];
+    };
+    const [currentImage, setCurrentImage] = useState(getRandomImage);
+
+
+
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            setCurrentImage(getRandomImage);
+        }, 6000); // Change the interval time as needed (in milliseconds)
+
+        return () => clearInterval(intervalId);
+    }, []);
 
     const serviceListOne = ['Free account', '100% transparent costs', '24/7 support', 'Online banking', 'Mobile banking', 'Full data privacy compliance']
     const serviceListTwo = ['Easy transfers', 'A powerful security infrastructure', 'Business without borders', 'Deposit checks instantly', 'Worldwide Coverage', 'Affiliates and partnership']
     const serviceListThree = ['Corporate Cards', 'International Investments', 'Direct Debit', 'Premium Support', 'Automated Accounting', 'Business Banking']
+
     return (
         <div className=''>
 
             <div id='homePage'>
                 <div className='relative  lg:overflow-hidden'>
+                    <AnimatePresence presenceAffectsLayout>
+                        <motion.div
+                            initial={{ opacity: 0.5, scale: 1, filter: 'brightness(40%)' }}
+                            animate={{
+                                scale: 1.5, opacity: 1, filter: 'brightness(25%)',
+                            }} // You can adjust the scale value
+                            transition={{ duration: 20, repeat: Infinity, repeatType: "reverse", ease: "easeInOut", opacity: { duration: 0.55 }, filter: { duration: 5.55 } }}
 
-                    <div
-                        className='homeBg'
-                    />
+                            style={{
+                                width: '100%',
+                                height: '100%',
+                                backgroundRepeat: 'no-repeat',
+                                backgroundSize: 'cover',
+                                position: 'absolute',
+                                backgroundPosition: 'center center',
+                                backgroundImage: `url(${currentImage})`,
+                            }}
+                            key={currentImage}
+                            exit={{
+                                filter: ['brightness(40%)', 'brightness(20%)'],
+                                transition: { duration: 1.5, ease: 'easeIn' }
+
+                            }}
+
+                        >
+
+
+                        </motion.div>
+                    </AnimatePresence>
                     <div className=' px-10 md:pb-[10rem] lg:px-[10rem] h-full w-full z-10 relative items-center flex lg:items-baseline'>
                         <div className='pt-[5rem] w-full flex flex-col justify-center items-start relative'>
                             <div id='heading' className='relative whitespace-nowrap space-x-1 flex text-[#cababa] text-[18px] tracking-normal font-thin  pb-11 pt-8 lg:pt-8'>
@@ -32,7 +83,7 @@ const Home = () => {
                                 <span className='items-center justify-center flex'>
                                     <ShieldCheckIcon className='w-5' />
                                     Secure
-                                </span> . 
+                                </span> .
                                 <span>Guarantee</span>
                             </div>
 

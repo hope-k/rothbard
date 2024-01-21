@@ -43,7 +43,7 @@ const Home = () => {
     const serviceListThree = ['Corporate Cards', 'International Investments', 'Direct Debit', 'Premium Support', 'Automated Accounting', 'Business Banking']
 
     return (
-        <div className=''>
+        <div className='overflow-hidden'>
 
             <div id='homePage'>
                 <div className='relative  overflow-hidden'>
@@ -88,10 +88,10 @@ const Home = () => {
                             </div>
 
                             <h1 className='text-4xl font-montserrat pb-8 text-[#f0f0f0] lora md:max-w-lg  capitalize tracking-tighter'>
-                                Welcome to the <span className='border-b-2 underline  border-yellow-700 font-medium tracking-tight  mb-2'><br /> Hackett Hill Capital, </span> Your Next Experience In Trust.
+                                Welcome to the <span className='border-b-2 underline  border-yellow-700 font-medium tracking-tight  mb-2'><br /> Rothbard Investment Group, </span> Secure Today, Invest in Tomorrow.
                             </h1>
                             <p className='max-w-[75ch] text-[16px] text-[#C0C0C0] lg:mb-6 font-montserrat tracking-tight'>
-                                The modern banking landscape is shaped by Hackett Hill Capital.
+                                The modern banking landscape is shaped by Rothbard Investment Group.
                                 Everything you require in one location to construct your financial future.
                                 The simplest approach to handling personal finances.
                                 Send and receive money globally, Our goal is to help you achieve success in administering your personal money as well as the revenues from your business.

@@ -55,7 +55,7 @@ const Header = () => {
                                 </div>
                                 <div >
                                     <div className='text-slate-600 font-bold text-sm'>+61 3 9854 4666 </div>
-                                    <div className='text-slate-500 text-sm'>hacketthillcapital@support.com</div>
+                                    <div className='text-slate-500 text-sm'>rothbardau@support.com</div>
                                 </div>
                             </div>
                             <div className='flex mr-[4rem] whitespace-nowrap'>

@@ -1,11 +1,13 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
 
 const Footer = () => {
     return (
         <div className='flex bg-slate-200 shadow-lg lg:px-[6rem] px-[2rem] lg:h-[50vh] flex-wrap w-full'>
             <div className='mt-[3rem] flex flex-col'>
                 <div className='w-[300px] h-[300px] absolute'>
-                    <img src='/hack.png' alt='logo' />
+                    <img src='/hacketthill.svg' alt='logo' />
                 </div>
                 <p className='font-light relative top-[6rem] max-w-lg text-[15px] text-[#6084a4]'>
                     We’re a leading international banking group committed to building a sustainable business over the long-term. We operate in some of the world's most dynamic markets and have been for over 15 years.
@@ -15,11 +17,10 @@ const Footer = () => {
             <div className='lg:mt-[3rem] lg:mx-[2rem] mt-[8rem]'>
                 <h1 className='font-semibold text-lg mb-3'>Quick Links</h1>
                 <ul className='text-[#6084a4] leading-5 text-[15px]'>
-                    <li className='cursor-pointer'>Services</li>
-                    <li className='cursor-pointer'>Blog</li>
-                    <li className='cursor-pointer'>Contact</li>
-                    <li className='cursor-pointer'>About</li>
-                    <li className='cursor-pointer'>Home</li>
+                    <li><Link to='/sign-in' className='cursor-pointer'>Online Banking</Link></li>
+                    <li><Link to='/sign-in' className='cursor-pointer'>Credit Cards</Link></li>
+                    <li><Link to='/register' className='cursor-pointer'>Apply Now</Link> </li>
+                    <li><Link to='/sign-in' className='cursor-pointer'>Loans</Link></li>
                 </ul>
             </div>
 
